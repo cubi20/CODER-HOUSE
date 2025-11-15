@@ -1,0 +1,91 @@
+// _mixins.scss
+@use 'variables' as *;
+
+// Mixin para centrar elementos
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Mixin para transiciones
+@mixin transition($property: all, $duration: $transition-fast) {
+    transition: $property $duration;
+}
+
+// Mixin para sombras hover
+@mixin hover-shadow($shadow: $shadow-xl) {
+    transition: all $transition-fast;
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: $shadow;
+    }
+}
+
+// Mixin para texto con sombra
+@mixin text-shadow($color: rgba(0, 0, 0, 0.5)) {
+    text-shadow: 2px 2px 10px $color;
+}
+
+// Mixin para botones
+@mixin button-base {
+    padding: 12px 35px;
+    border: none;
+    border-radius: $border-radius-round;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+    @include transition;
+    
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+// Mixin para cards
+@mixin card-base {
+    background: $color-white;
+    border-radius: $border-radius-md;
+    overflow: hidden;
+    box-shadow: $shadow-sm;
+    @include transition;
+}
+
+// Mixin para responsive
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == mobile {
+        @media screen and (max-width: $breakpoint-mobile) {
+            @content;
+        }
+    }
+    @else if $breakpoint == tablet {
+        @media screen and (max-width: $breakpoint-tablet) {
+            @content;
+        }
+    }
+    @else if $breakpoint == desktop {
+        @media screen and (min-width: $breakpoint-desktop) {
+            @content;
+        }
+    }
+}
+
+// Mixin para gradientes
+@mixin gradient-overlay($start: rgba(0, 0, 0, 0.2), $end: rgba(0, 0, 0, 0.3)) {
+    background: linear-gradient($start, $end);
+}
+
+// Mixin para efectos hover en imágenes
+@mixin image-zoom {
+    overflow: hidden;
+    
+    img {
+        @include transition(transform, $transition-slow);
+    }
+    
+    &:hover img {
+        transform: scale(1.1);
+    }
+}
