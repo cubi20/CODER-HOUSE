@@ -2,7 +2,8 @@
 
 ![Estado del Proyecto](https://img.shields.io/badge/Estado-Terminado-success?style=flat-square)
 ![Licencia](https://img.shields.io/badge/Licencia-MIT-blue?style=flat-square)
-![Responsive](https://img.shields.io/badge/Responsive-Design-orange?style=flat-square)
+![SASS](https://img.shields.io/badge/SASS-hotpink?style=flat-square&logo=sass&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?style=flat-square&logo=bootstrap&logoColor=white)
 
 > **Donde el minimalismo y el maximalismo se encuentran.**
 
@@ -12,7 +13,7 @@
 
 **CRUDAS** es una plataforma de comercio electrónico moderna diseñada para una marca de moda vanguardista. Este proyecto ofrece una experiencia de usuario fluida y visualmente atractiva, permitiendo a los clientes explorar colecciones que fusionan estilos opuestos en una interfaz limpia y sofisticada.
 
-El sitio ha sido desarrollado con un enfoque **Desktop First**, asegurando una navegación perfecta desde dispositivos móviles hasta pantallas de escritorio de alta resolución.
+El sitio ha sido desarrollado con un enfoque **Mobile First**, utilizando **SASS** para la gestión de estilos avanzados y **Bootstrap** para la estructura responsiva.
 
 ### 🔗 Demo en Vivo
 Puedes ver el proyecto funcionando aquí:
@@ -23,10 +24,10 @@ Puedes ver el proyecto funcionando aquí:
 ## ✨ Características Principales
 
 * **Diseño Totalmente Responsivo:** Adaptable a móviles, tablets y desktops.
+* **Estilos Modulares (SASS):** Uso de variables, nesting y mixins para un código CSS mantenible y escalable.
 * **Hero Section Inmersiva:** Imagen de portada a pantalla completa con call-to-action claro.
-* **Navegación Dinámica:** Barra de navegación fija (`sticky`) que cambia de estado al hacer scroll y menú hamburguesa para móviles (Bootstrap).
+* **Navegación Dinámica:** Barra de navegación fija (`sticky`) y menú hamburguesa funcional.
 * **Catálogo Visual:** Grillas de productos optimizadas con efectos `hover`.
-* **Filtrado por Colecciones:** Secciones dedicadas para temporadas y ediciones limitadas.
 
 ---
 
@@ -35,7 +36,8 @@ Puedes ver el proyecto funcionando aquí:
 Este proyecto fue construido utilizando tecnologías web estándar y librerías modernas:
 
 * **HTML5:** Estructura semántica y accesible.
-* **CSS3:** Estilos personalizados, animaciones, Flexbox y CSS Grid.
+* **SASS (SCSS):** Preprocesador CSS utilizado para organizar estilos, usar variables para la paleta de colores y anidamiento.
+* **CSS3:** Resultado de la compilación de SASS.
 * **Bootstrap 5.3:** Framework para el sistema de grillas y componentes responsivos.
 * **Git & GitHub:** Control de versiones y despliegue continuo a través de GitHub Pages.
 * **Google Fonts:** Tipografía 'Roboto'.
@@ -44,12 +46,16 @@ Este proyecto fue construido utilizando tecnologías web estándar y librerías 
 
 ## 📂 Estructura del Proyecto
 
+El proyecto utiliza SASS para generar los estilos finales.
+
 ```text
 CODER-HOUSE/
+├── scss/               # Archivos fuente SASS (Variables, parciales, etc.)
+│   └── main.scss       # Archivo principal que importa los módulos
 ├── css/
-│   └── main.css        # Estilos personalizados
+│   └── main.css        # CSS final compilado (Vinculado al HTML)
 ├── img/
-│   ├── hero-bg.jpg     # Imágenes
+│   ├── hero-bg.jpg
 │   └── ...
 ├── index.html          # Página de inicio
 ├── productos.html      # Catálogo completo
