@@ -7,7 +7,60 @@ header {
     top: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.95);
+    // Fondo oscuro semitransparente por defecto para mejor legibilidad sobre la imagen hero
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
+    backdrop-filter: blur(8px);
+    transition: all $transition-medium;
+    
+    // Cuando el usuario hace scroll o hover, cambia a fondo blanco
+    &.scrolled,
+    &:hover {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    // Ajustar colores del texto cuando está sobre fondo oscuro
+    &:not(.scrolled):not(:hover) {
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            
+            &:hover,
+            &.active {
+                color: $color-primary !important;
+            }
+        }
+        
+        .navbar-icons a,
+        .search-form button {
+            color: rgba(255, 255, 255, 0.9);
+            
+            &:hover {
+                color: $color-primary;
+            }
+        }
+        
+        .search-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            
+            input {
+                color: white;
+                
+                &::placeholder {
+                    color: rgba(255, 255, 255, 0.7);
+                }
+            }
+        }
+    }
+    
+    // Cuando hay hover o scroll, vuelven los colores normales
+    &.scrolled,
+    &:hover {
+        .nav-link {
+            color: $color-text !important;
+        }
+    }
 }
 
 .navbar {

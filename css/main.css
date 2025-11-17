@@ -3,7 +3,41 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
+  backdrop-filter: blur(8px);
+  transition: all 0.4s ease;
+}
+header.scrolled, header:hover {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+header:not(.scrolled):not(:hover) .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+header:not(.scrolled):not(:hover) .nav-link:hover, header:not(.scrolled):not(:hover) .nav-link.active {
+  color: #C66E0C !important;
+}
+header:not(.scrolled):not(:hover) .navbar-icons a,
+header:not(.scrolled):not(:hover) .search-form button {
+  color: rgba(255, 255, 255, 0.9);
+}
+header:not(.scrolled):not(:hover) .navbar-icons a:hover,
+header:not(.scrolled):not(:hover) .search-form button:hover {
+  color: #C66E0C;
+}
+header:not(.scrolled):not(:hover) .search-form {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+header:not(.scrolled):not(:hover) .search-form input {
+  color: white;
+}
+header:not(.scrolled):not(:hover) .search-form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+header.scrolled .nav-link, header:hover .nav-link {
+  color: #333 !important;
 }
 
 .navbar {
