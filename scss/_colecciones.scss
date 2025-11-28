@@ -1,0 +1,544 @@
+// _colecciones.scss - CRUDAS Fashion Store
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// PÁGINA DE COLECCIONES
+// ============================================
+.colecciones-hero {
+    height: 70vh;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    @include flex-center;
+    position: relative;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    
+    &__content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: $color-white;
+        max-width: 800px;
+        padding: 0 $spacing-md;
+        
+        h1 {
+            font-size: $font-size-6xl;
+            font-weight: $font-weight-thin;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            margin-bottom: $spacing-md;
+            @include text-shadow;
+        }
+        
+        p {
+            font-size: $font-size-xl;
+            font-weight: $font-weight-light;
+            letter-spacing: 2px;
+            margin-bottom: $spacing-xl;
+        }
+    }
+}
+
+// ============================================
+// NAVEGACIÓN DE COLECCIONES
+// ============================================
+.colecciones-nav {
+    background: $color-white;
+    padding: $spacing-xl 0;
+    position: sticky;
+    top: $navbar-height;
+    z-index: $z-sticky;
+    box-shadow: $shadow-xs;
+    
+    &__list {
+        @include flex-center;
+        gap: $spacing-xl;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-width: $max-width-content;
+        margin: 0 auto;
+    }
+    
+    &__link {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: $color-text-light;
+        text-decoration: none;
+        padding: $spacing-sm 0;
+        position: relative;
+        @include transition;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: $color-primary;
+            @include transition;
+        }
+        
+        &:hover,
+        &.active {
+            color: $color-primary;
+            
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// ============================================
+// SECCIÓN DE COLECCIÓN INDIVIDUAL
+// ============================================
+.coleccion-section {
+    padding: $spacing-mega 0;
+    
+    &:nth-child(even) {
+        background-color: $color-background-alt;
+    }
+    
+    &__header {
+        text-align: center;
+        max-width: $max-width-text;
+        margin: 0 auto $spacing-xxl;
+        padding: 0 $spacing-md;
+        
+        .season-tag {
+            display: inline-block;
+            padding: 6px 20px;
+            background-color: $color-primary;
+            color: $color-white;
+            font-size: $font-size-xs;
+            font-weight: $font-weight-medium;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: $border-radius-round;
+            margin-bottom: $spacing-lg;
+        }
+        
+        h2 {
+            font-size: $font-size-5xl;
+            font-weight: $font-weight-thin;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: $spacing-md;
+            color: $color-text;
+        }
+        
+        p {
+            font-size: $font-size-lg;
+            color: $color-text-light;
+            line-height: 1.8;
+        }
+    }
+}
+
+// ============================================
+// GRID DE COLECCIÓN
+// ============================================
+.coleccion-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: $spacing-md;
+    max-width: $max-width-content;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    
+    // Layouts variados para cada item
+    .coleccion-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: $border-radius-md;
+        
+        &--large {
+            grid-column: span 8;
+            grid-row: span 2;
+        }
+        
+        &--medium {
+            grid-column: span 4;
+        }
+        
+        &--tall {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+        
+        &--wide {
+            grid-column: span 6;
+        }
+        
+        img {
+            @include image-cover;
+            @include transition(transform, $transition-slow);
+        }
+        
+        &:hover img {
+            transform: scale(1.05);
+        }
+        
+        &__overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: $spacing-xl;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: $color-white;
+            
+            h3 {
+                font-size: $font-size-2xl;
+                font-weight: $font-weight-light;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: $spacing-xs;
+            }
+            
+            .precio {
+                font-size: $font-size-xl;
+                font-weight: $font-weight-medium;
+                color: $color-primary-light;
+            }
+        }
+        
+        &__actions {
+            position: absolute;
+            top: $spacing-md;
+            right: $spacing-md;
+            display: flex;
+            flex-direction: column;
+            gap: $spacing-sm;
+            opacity: 0;
+            transform: translateX(10px);
+            @include transition;
+        }
+        
+        &:hover &__actions {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+// ============================================
+// LOOKBOOK STYLE
+// ============================================
+.lookbook-section {
+    padding: $spacing-mega 0;
+    
+    &__header {
+        text-align: center;
+        margin-bottom: $spacing-xxl;
+        
+        h2 {
+            font-size: $font-size-4xl;
+            font-weight: $font-weight-light;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+    }
+}
+
+.lookbook-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+    @include respond-to(laptop) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.lookbook-item {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        
+        img {
+            @include image-cover;
+        }
+    }
+    
+    &__content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: $spacing-xxl;
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
+        color: $color-white;
+        
+        .look-number {
+            font-size: $font-size-xs;
+            font-weight: $font-weight-medium;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: $spacing-md;
+        }
+        
+        h3 {
+            font-size: $font-size-4xl;
+            font-weight: $font-weight-thin;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: $spacing-lg;
+        }
+        
+        .look-items {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 $spacing-lg;
+            
+            li {
+                display: flex;
+                justify-content: space-between;
+                padding: $spacing-sm 0;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+                font-size: $font-size-sm;
+                
+                .item-name {
+                    font-weight: $font-weight-light;
+                }
+                
+                .item-price {
+                    color: $color-primary-light;
+                    font-weight: $font-weight-medium;
+                }
+            }
+        }
+        
+        .btn-shop-look {
+            @include button-ghost;
+        }
+    }
+}
+
+// ============================================
+// COLECCIÓN LIMITADA
+// ============================================
+.edicion-limitada {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: $color-white;
+    padding: $spacing-mega 0;
+    
+    &__header {
+        text-align: center;
+        margin-bottom: $spacing-xxl;
+        
+        .exclusive-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: $spacing-sm;
+            padding: 8px 20px;
+            border: 1px solid $color-primary;
+            border-radius: $border-radius-round;
+            font-size: $font-size-xs;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: $color-primary;
+            margin-bottom: $spacing-lg;
+        }
+        
+        h2 {
+            font-size: $font-size-5xl;
+            font-weight: $font-weight-thin;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: $spacing-md;
+        }
+        
+        p {
+            font-size: $font-size-lg;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    }
+    
+    .productos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: $spacing-xl;
+        max-width: $max-width-content;
+        margin: 0 auto;
+        padding: 0 $spacing-md;
+    }
+    
+    .producto-limitado {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: $border-radius-md;
+        overflow: hidden;
+        @include transition;
+        
+        &:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-10px);
+        }
+        
+        &__image {
+            position: relative;
+            height: 400px;
+            
+            img {
+                @include image-cover;
+            }
+            
+            .stock-badge {
+                position: absolute;
+                top: $spacing-md;
+                left: $spacing-md;
+                padding: 6px 15px;
+                background: rgba(0,0,0,0.8);
+                border: 1px solid $color-primary;
+                border-radius: $border-radius-xs;
+                font-size: $font-size-xs;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+        }
+        
+        &__info {
+            padding: $spacing-lg;
+            text-align: center;
+            
+            .numero-edicion {
+                font-size: $font-size-xs;
+                color: $color-primary;
+                letter-spacing: 2px;
+                margin-bottom: $spacing-sm;
+            }
+            
+            h3 {
+                font-size: $font-size-xl;
+                font-weight: $font-weight-light;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: $spacing-md;
+            }
+            
+            .precio {
+                font-size: $font-size-2xl;
+                color: $color-primary;
+                font-weight: $font-weight-medium;
+                margin-bottom: $spacing-lg;
+            }
+            
+            .btn-reservar {
+                @include button-ghost;
+                border-color: $color-primary;
+                color: $color-primary;
+                
+                &:hover {
+                    background: $color-primary;
+                    color: $color-white;
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@include respond-to(laptop) {
+    .colecciones-hero__content h1 {
+        font-size: $font-size-5xl;
+    }
+    
+    .colecciones-nav {
+        overflow-x: auto;
+        
+        &__list {
+            padding: 0 $spacing-md;
+            justify-content: flex-start;
+            gap: $spacing-lg;
+        }
+        
+        &__link {
+            white-space: nowrap;
+        }
+    }
+    
+    .coleccion-section__header h2 {
+        font-size: $font-size-4xl;
+    }
+    
+    .coleccion-grid {
+        grid-template-columns: repeat(6, 1fr);
+        
+        .coleccion-item {
+            &--large {
+                grid-column: span 6;
+            }
+            
+            &--medium,
+            &--tall {
+                grid-column: span 3;
+            }
+            
+            &--wide {
+                grid-column: span 6;
+            }
+        }
+    }
+    
+    .lookbook-item {
+        height: 80vh;
+        min-height: 500px;
+    }
+}
+
+@include respond-to(mobile) {
+    .colecciones-hero__content h1 {
+        font-size: $font-size-4xl;
+        letter-spacing: 5px;
+    }
+    
+    .coleccion-grid {
+        grid-template-columns: 1fr;
+        
+        .coleccion-item {
+            &--large,
+            &--medium,
+            &--tall,
+            &--wide {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+    }
+    
+    .lookbook-item__content h3 {
+        font-size: $font-size-2xl;
+    }
+    
+    .edicion-limitada__header h2 {
+        font-size: $font-size-4xl;
+        letter-spacing: 4px;
+    }
+}

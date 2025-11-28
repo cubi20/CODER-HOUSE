@@ -3,68 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conoce a CRUDAS - La historia de nuestra marca y filosofía">
+    <meta name="description" content="Conocé a CRUDAS - Nuestra historia, filosofía y valores. Moda femenina argentina con identidad.">
     <meta name="author" content="CRUDAS Fashion">
     
-    <!-- BOOTSTRAP CSS -->
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/main.css">
     
-    <!-- GOOGLE FONTS -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     
-    <title>Nosotros - CRUDAS</title>
+    <title>Nosotros - CRUDAS | Nuestra Historia</title>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <!-- Botón hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <!-- Menú -->
+
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">HOME</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="productos.html">PRODUCTOS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="nosotros.html">NOSOTROS</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                COLECCIONES
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#verano">Verano 2025</a></li>
-                                <li><a class="dropdown-item" href="#invierno">Invierno 2025</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#limitada">Edición Limitada</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="colecciones.html">Colecciones</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="nosotros.html">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
-                <!-- Logo -->
+
                 <a class="navbar-brand" href="index.html">
                     <img src="img/logo.jpg" alt="CRUDAS Logo" class="logo-img">
                 </a>
-                <!-- Buscador e iconos -->
+
                 <div class="navbar-right">
                     <form class="search-form">
                         <input type="search" placeholder="Buscar...">
-                        <button type="submit">Buscar</button>
+                        <button type="submit">🔍</button>
                     </form>
-                    
                     <div class="navbar-icons">
                         <a href="#cuenta">👤</a>
-                        <a href="#carrito">🛒</a>
+                        <a href="#favoritos">♡</a>
+                        <a href="#carrito" class="cart-icon">🛒<span class="cart-icon__count">0</span></a>
                     </div>
                 </div>
             </div>
@@ -72,70 +56,125 @@
     </header>
 
     <main>
+        <!-- Hero -->
         <section class="titulo">
-            <h1>¿Quiénes Somos?</h1>
-            <p>La historia detrás de CRUDAS</p>
+            <h1>Nuestra Historia</h1>
+            <p>Conocé el corazón detrás de CRUDAS</p>
         </section>
         
-        
-        <!-- Nuestra Filosofía -->
+        <!-- Filosofía -->
         <section class="philosophy-section">
             <article class="philosophy-content">
                 <h2>Nuestra Filosofía</h2>
                 <p>
-                    <strong>CRUDAS</strong> es la fusión de dos mundos completamente opuestos: 
-                    el <em>minimalismo</em> y el <em>maximalismo</em>.
+                    <strong>CRUDAS</strong> nació de una idea simple pero poderosa: 
+                    la moda no tiene que elegir entre extremos.
                 </p>
                 <p>
-                    Llevándolo al mundo real de la moda, es el punto de encuentro donde 
-                    la sobriedad y el exceso conviven en perfecta armonía.
+                    Somos la fusión de dos mundos aparentemente opuestos: 
+                    el <em>minimalismo</em> con su elegancia silenciosa, y el 
+                    <em>maximalismo</em> con su expresión audaz. En ese punto de 
+                    encuentro, creamos piezas que hablan de vos.
                 </p>
                 <p>
-                    Es una marca para aquellos con personalidad fuerte, personas 
-                    innovadoras, auténticas y <strong>crudas</strong>.
+                    Diseñamos para mujeres que no necesitan encajar en una caja. 
+                    Para las que un día eligen la simplicidad y al siguiente explotan 
+                    con color y textura. Para las auténticas, las innovadoras, 
+                    las <strong>crudas</strong>.
                 </p>
             </article>
             <div class="philosophy-image">
-                <img src="img/filosofia.png" alt="Filosofía CRUDAS">
+                <img src="img/filosofia.png" alt="Filosofía CRUDAS - Fusión de estilos">
             </div>
         </section>
 
-        <!-- Nuestros valores -->
+        <!-- Valores -->
         <section class="values-section">
             <h2>Nuestros Valores</h2>
             <div class="values-container">
                 <article class="value-item">
                     <h3>Autenticidad</h3>
-                    <p>Creemos en la expresión personal sin filtros ni máscaras.</p>
+                    <p>Creemos en la expresión personal sin filtros ni máscaras. Cada pieza está diseñada para que puedas ser vos misma.</p>
                 </article>
                 <article class="value-item">
                     <h3>Sostenibilidad</h3>
-                    <p>Comprometidos con prácticas responsables y materiales eco-friendly.</p>
+                    <p>Trabajamos con materiales responsables y producción local. Moda consciente sin sacrificar el estilo.</p>
                 </article>
                 <article class="value-item">
                     <h3>Innovación</h3>
-                    <p>Siempre explorando nuevas formas de expresión en la moda.</p>
+                    <p>Exploramos constantemente nuevas formas, texturas y combinaciones. El diseño argentino tiene mucho que decir.</p>
+                </article>
+                <article class="value-item">
+                    <h3>Comunidad</h3>
+                    <p>CRUDAS es más que una marca, es una comunidad de mujeres que se apoyan y celebran su individualidad.</p>
                 </article>
             </div>
         </section>
 
-        <!-- linea de tiempo -->
+        <!-- Números -->
+        <section class="numeros-section">
+            <h2>CRUDAS en Números</h2>
+            <div class="numeros-container">
+                <div class="numero-item">
+                    <span class="numero">5000+</span>
+                    <p>Clientas Felices</p>
+                </div>
+                <div class="numero-item">
+                    <span class="numero">100%</span>
+                    <p>Producción Local</p>
+                </div>
+                <div class="numero-item">
+                    <span class="numero">3</span>
+                    <p>Colecciones Anuales</p>
+                </div>
+                <div class="numero-item">
+                    <span class="numero">♡</span>
+                    <p>Hecho con Amor</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
         <section class="timeline-section">
-            <h2>Nuestra Historia</h2>
+            <h2>Nuestro Camino</h2>
             <div class="timeline">
                 <article class="timeline-item">
-                    <h4>2025 - El Comienzo</h4>
-                    <p>CRUDAS nace como una idea revolucionaria en el mundo de la moda.</p>
+                    <h4>2025 - El Nacimiento</h4>
+                    <p>CRUDAS nace como un proyecto que desafía las convenciones de la moda. Una idea que se transforma en realidad desde Buenos Aires para el mundo.</p>
                 </article>
                 <article class="timeline-item">
-                    <h4>2026 - Primera Colección</h4>
-                    <p>Proximamente nuestra primera colección fusionando minimalismo y maximalismo.</p>
+                    <h4>2025 - Primera Colección</h4>
+                    <p>Lanzamos nuestra primera colección fusionando minimalismo y maximalismo. La respuesta de nuestra comunidad nos confirma que íbamos por buen camino.</p>
+                </article>
+                <article class="timeline-item">
+                    <h4>2026 - Expansión</h4>
+                    <p>Próximamente abriremos nuestro showroom en Palermo y llegaremos a más mujeres en todo el país. El viaje recién comienza.</p>
                 </article>
             </div>
         </section>
 
+        <!-- Equipo -->
+        <section class="equipo-section">
+            <div class="equipo-content">
+                <h2>El Equipo</h2>
+                <p>
+                    Detrás de CRUDAS hay un equipo de mujeres apasionadas por el diseño, 
+                    la moda y la creación de experiencias únicas. Desde diseñadoras hasta 
+                    artesanas, cada una aporta su visión para que cada pieza sea especial.
+                </p>
+                <a href="contacto.html" class="btn-equipo">¿Querés sumarte?</a>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>¿Lista para ser parte?</h2>
+            <p>Descubrí nuestra colección y encontrá piezas que hablan de vos.</p>
+            <a href="productos.html" class="btn-cta">Ver Productos</a>
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="columna">
@@ -143,22 +182,30 @@
                 <p>La fusión perfecta entre minimalismo y maximalismo.</p>
             </div>
             <div class="columna">
-                <h5>Enlaces Rápidos</h5>
+                <h5>Tienda</h5>
                 <nav>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
                         <li><a href="productos.html">Productos</a></li>
-                        <li><a href="nosotros.html">Nosotros</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="colecciones.html">Colecciones</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="columna">
-                <h5>Síguenos</h5>
+                <h5>Ayuda</h5>
+                <nav>
+                    <ul>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="#envios">Envíos</a></li>
+                        <li><a href="#cambios">Cambios</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="columna">
+                <h5>Seguinos</h5>
                 <div class="redes">
-                    <a href="#">Facebook</a>
                     <a href="#">Instagram</a>
-                    <a href="#">GitHub</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">TikTok</a>
                 </div>
             </div>
         </div>
@@ -167,11 +214,9 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Cambiar el navbar cuando se hace scroll
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {

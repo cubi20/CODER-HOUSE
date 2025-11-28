@@ -1,0 +1,498 @@
+// _pages.scss - CRUDAS Fashion Store
+// Estilos específicos de páginas (Contacto, etc)
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// PÁGINA DE CONTACTO
+// ============================================
+.contacto-hero {
+    padding: 150px $spacing-md 80px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba($color-primary, 0.05), rgba($color-background, 0.8));
+    
+    h1 {
+        font-size: $font-size-5xl + 8px;
+        font-weight: $font-weight-thin;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        margin-bottom: $spacing-md;
+        color: $color-text;
+    }
+    
+    p {
+        font-size: $font-size-lg;
+        color: $color-text-light;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+.contacto-section {
+    padding: $spacing-xxxl $spacing-md;
+    max-width: $max-width-narrow;
+    margin: 0 auto;
+}
+
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xxl;
+    
+    @include respond-to(laptop) {
+        grid-template-columns: 1fr;
+        gap: $spacing-xl;
+    }
+}
+
+.contacto-info {
+    h2 {
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-light;
+        margin-bottom: $spacing-lg;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    
+    > p {
+        color: $color-text-light;
+        line-height: 1.8;
+        margin-bottom: $spacing-xl;
+    }
+}
+
+.info-items {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-md;
+    
+    .icon {
+        font-size: $font-size-3xl;
+        color: $color-primary;
+        min-width: 40px;
+    }
+    
+    .content {
+        h4 {
+            font-size: $font-size-base;
+            font-weight: $font-weight-medium;
+            margin-bottom: $spacing-xs;
+            color: $color-text;
+        }
+        
+        p,
+        a {
+            color: $color-text-light;
+            font-size: $font-size-sm;
+            text-decoration: none;
+            @include transition;
+        }
+        
+        a:hover {
+            color: $color-primary;
+        }
+    }
+}
+
+.horarios {
+    margin-top: $spacing-xl;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: $border-radius-md;
+    
+    h4 {
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        margin-bottom: $spacing-md;
+        color: $color-text;
+    }
+}
+
+.horarios-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    div {
+        display: flex;
+        justify-content: space-between;
+        font-size: $font-size-sm;
+        color: $color-text-light;
+    }
+}
+
+.redes-contacto {
+    margin-top: $spacing-xl;
+    
+    h4 {
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        margin-bottom: $spacing-md;
+        color: $color-text;
+    }
+}
+
+.redes-icons {
+    display: flex;
+    gap: $spacing-md;
+    
+    a {
+        width: 50px;
+        height: 50px;
+        @include flex-center;
+        background: $color-secondary;
+        color: $color-white;
+        border-radius: $border-radius-circle;
+        font-size: $font-size-xl;
+        text-decoration: none;
+        @include transition;
+        
+        &:hover {
+            background: $color-primary;
+            transform: translateY(-3px);
+        }
+    }
+}
+
+.contacto-form {
+    background: $color-white;
+    padding: 50px;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+    
+    h3 {
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-light;
+        margin-bottom: $spacing-lg;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $color-text;
+    }
+    
+    @include respond-to(laptop) {
+        padding: $spacing-lg;
+    }
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+    
+    @include respond-to(laptop) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    margin-bottom: 25px;
+    
+    &.full-width {
+        grid-column: span 2;
+        
+        @include respond-to(laptop) {
+            grid-column: span 1;
+        }
+    }
+    
+    label {
+        display: block;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        margin-bottom: 8px;
+        color: $color-text;
+    }
+    
+    input,
+    textarea,
+    select {
+        width: 100%;
+        @include input-base;
+        padding: 14px $spacing-md;
+    }
+    
+    textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 16px;
+    @include button-primary;
+}
+
+// ============================================
+// FAQ SECTION
+// ============================================
+.faq-section {
+    padding: $spacing-xxxl $spacing-md;
+    background: #f8f9fa;
+    
+    h2 {
+        text-align: center;
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-light;
+        margin-bottom: 50px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
+
+.faq-container {
+    max-width: $max-width-text;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: $color-white;
+    border-radius: $border-radius-sm;
+    margin-bottom: $spacing-md;
+    overflow: hidden;
+    box-shadow: $shadow-xs;
+}
+
+.faq-question {
+    padding: $spacing-md 25px;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include transition;
+    
+    &:hover {
+        background: #fafafa;
+    }
+    
+    &::after {
+        content: '+';
+        font-size: $font-size-2xl;
+        color: $color-primary;
+        @include transition;
+    }
+    
+    .faq-item.active & {
+        &::after {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    @include transition(max-height);
+    
+    .faq-item.active & {
+        max-height: 200px;
+    }
+    
+    p {
+        padding: 0 25px $spacing-md;
+        color: $color-text-light;
+        line-height: 1.8;
+    }
+}
+
+// ============================================
+// MAPA SECTION
+// ============================================
+.mapa-section {
+    height: 400px;
+    background: linear-gradient(135deg, $color-secondary 0%, $color-secondary-light 100%);
+    @include flex-center;
+    color: $color-white;
+    text-align: center;
+    
+    p {
+        font-size: $font-size-lg;
+        opacity: 0.7;
+        
+        &:last-child {
+            font-size: $font-size-sm;
+            margin-top: $spacing-sm;
+        }
+    }
+}
+
+// ============================================
+// SECCIONES GENÉRICAS CON ESTILO INLINE REEMPLAZADAS
+// ============================================
+.numeros-section {
+    padding: $spacing-xxxl $spacing-md;
+    background: linear-gradient(135deg, $color-secondary 0%, #1a1a1a 100%);
+    color: $color-white;
+    text-align: center;
+    
+    h2 {
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-thin;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 50px;
+    }
+}
+
+.numeros-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: $spacing-xl;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.numero-item {
+    .numero {
+        font-size: 56px;
+        font-weight: $font-weight-thin;
+        color: $color-primary;
+    }
+    
+    p {
+        font-size: $font-size-sm;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: $spacing-sm;
+        opacity: 0.7;
+    }
+}
+
+.equipo-section {
+    padding: $spacing-xxxl $spacing-md;
+    background: $color-background-alt;
+    text-align: center;
+    
+    .equipo-content {
+        max-width: $max-width-text;
+        margin: 0 auto;
+    }
+    
+    h2 {
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-thin;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: $spacing-lg;
+    }
+    
+    p {
+        color: $color-text-light;
+        font-size: $font-size-lg;
+        line-height: 1.8;
+        margin-bottom: $spacing-xl;
+    }
+    
+    .btn-equipo {
+        display: inline-block;
+        padding: 15px $spacing-xl;
+        border: 2px solid $color-secondary;
+        border-radius: $border-radius-round;
+        color: $color-secondary;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: $font-size-sm;
+        @include transition;
+        
+        &:hover {
+            background: $color-secondary;
+            color: $color-white;
+        }
+    }
+}
+
+.cta-section {
+    padding: $spacing-mega $spacing-md;
+    text-align: center;
+    background: linear-gradient(135deg, rgba($color-primary, 0.1), rgba($color-background, 0.8));
+    
+    h2 {
+        font-size: 42px;
+        font-weight: $font-weight-thin;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        margin-bottom: $spacing-md;
+    }
+    
+    p {
+        color: $color-text-light;
+        font-size: $font-size-lg;
+        max-width: 600px;
+        margin: 0 auto $spacing-xl;
+    }
+    
+    .btn-cta {
+        display: inline-block;
+        padding: 15px 50px;
+        background: $color-secondary;
+        color: $color-white;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: $font-size-sm;
+        border-radius: $border-radius-round;
+        @include transition;
+        
+        &:hover {
+            background: $color-primary;
+            transform: scale(1.05);
+        }
+    }
+}
+
+// ============================================
+// COLECCIÓN BANNER (HOME)
+// ============================================
+.coleccion-banner {
+    background: linear-gradient(135deg, #1a1a1a 0%, $color-secondary 100%);
+    padding: $spacing-xxxl $spacing-md;
+    text-align: center;
+    color: $color-white;
+    
+    .season-badge {
+        display: inline-block;
+        padding: 8px $spacing-md;
+        border: 1px solid $color-primary;
+        border-radius: $border-radius-round;
+        font-size: $font-size-xs;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $color-primary;
+        margin-bottom: $spacing-md;
+    }
+    
+    h2 {
+        font-size: $font-size-5xl;
+        font-weight: $font-weight-thin;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        margin-bottom: $spacing-md;
+    }
+    
+    p {
+        font-size: $font-size-lg;
+        color: rgba(255, 255, 255, 0.7);
+        max-width: 600px;
+        margin: 0 auto $spacing-lg;
+    }
+    
+    .btn-coleccion {
+        @include button-ghost;
+        border-color: $color-primary;
+        color: $color-primary;
+        
+        &:hover {
+            background: $color-primary;
+            color: $color-white;
+        }
+    }
+}

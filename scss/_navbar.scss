@@ -1,4 +1,4 @@
-// _navbar.scss
+// _navbar.scss - CRUDAS Fashion Store
 @use 'variables' as *;
 @use 'mixins' as *;
 
@@ -6,21 +6,19 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
-    // Fondo oscuro semitransparente por defecto para mejor legibilidad sobre la imagen hero
+    z-index: $z-fixed;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
     backdrop-filter: blur(8px);
     transition: all $transition-medium;
     
-    // Cuando el usuario hace scroll o hover, cambia a fondo blanco
     &.scrolled,
     &:hover {
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     }
     
-    // Ajustar colores del texto cuando está sobre fondo oscuro
+    // Colores sobre fondo oscuro (hero)
     &:not(.scrolled):not(:hover) {
         .nav-link {
             color: rgba(255, 255, 255, 0.9) !important;
@@ -52,13 +50,28 @@ header {
                 }
             }
         }
+        
+        .cart-icon__count {
+            background-color: $color-primary;
+        }
     }
     
-    // Cuando hay hover o scroll, vuelven los colores normales
+    // Colores normales (scroll/hover)
     &.scrolled,
     &:hover {
         .nav-link {
             color: $color-text !important;
+        }
+        
+        .navbar-toggler-icon {
+            filter: none;
+        }
+    }
+    
+    // Hamburger icon en modo oscuro
+    &:not(.scrolled):not(:hover) {
+        .navbar-toggler-icon {
+            filter: brightness(0) invert(1);
         }
     }
 }
@@ -69,12 +82,11 @@ header {
 
     .container-fluid {
         position: relative;
-        max-width: 1400px;
+        max-width: $max-width-content;
         margin: 0 auto;
     }
 }
 
-// Menú de navegación
 .navbar-collapse {
     flex-grow: 0;
 }
@@ -85,7 +97,7 @@ header {
 
     .nav-link {
         color: $color-text;
-        font-size: 14px;
+        font-size: $font-size-sm;
         font-weight: $font-weight-medium;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -116,7 +128,6 @@ header {
     }
 }
 
-// Logo
 .navbar-brand {
     position: absolute;
     left: 50%;
@@ -136,7 +147,6 @@ header {
     }
 }
 
-// Menú derecho
 .navbar-right {
     @include flex-center;
     gap: 25px;
@@ -153,8 +163,12 @@ header {
         border: none;
         background: none;
         padding: 5px 10px;
-        width: 200px;
-        font-size: 14px;
+        width: 180px;
+        font-size: $font-size-sm;
+        
+        &:focus {
+            outline: none;
+        }
     }
 
     button {
@@ -174,16 +188,18 @@ header {
 .navbar-icons {
     display: flex;
     gap: 20px;
+    align-items: center;
 
     a {
         color: $color-text;
-        font-size: 18px;
+        font-size: $font-size-lg;
         text-decoration: none;
         @include transition;
+        position: relative;
 
         &:hover {
             color: $color-primary;
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
     }
 }
@@ -199,12 +215,46 @@ header {
 
 .dropdown-item {
     padding: 10px 25px;
-    font-size: 14px;
+    font-size: $font-size-sm;
     color: $color-text;
     @include transition;
 
     &:hover {
         background-color: $color-primary;
         color: $color-white;
+    }
+}
+
+// Responsive
+@include respond-to(laptop) {
+    .navbar {
+        padding: $spacing-sm $spacing-md;
+    }
+
+    .navbar-brand {
+        position: static;
+        transform: none;
+    }
+
+    .navbar-right {
+        display: none;
+    }
+
+    .navbar-nav {
+        align-items: center;
+        margin-top: $spacing-md;
+        gap: $spacing-md;
+        padding: $spacing-md 0;
+    }
+    
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: $border-radius-sm;
+        margin-top: $spacing-sm;
+        
+        .nav-link {
+            color: $color-text !important;
+            padding: $spacing-sm $spacing-md;
+        }
     }
 }

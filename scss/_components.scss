@@ -1,0 +1,535 @@
+// _components.scss - CRUDAS Fashion Store
+// Componentes reutilizables
+@use 'sass:color';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// BADGES Y ETIQUETAS DE PRODUCTO
+// ============================================
+.badge {
+    @include badge;
+    
+    &--new {
+        background-color: $color-success;
+    }
+    
+    &--sale {
+        background-color: $color-danger;
+    }
+    
+    &--limited {
+        background-color: $color-primary;
+    }
+    
+    &--bestseller {
+        background-color: $color-secondary;
+    }
+}
+
+// ============================================
+// PRECIOS
+// ============================================
+.price {
+    font-size: $font-size-2xl;
+    color: $color-primary;
+    font-weight: $font-weight-medium;
+    
+    &--original {
+        font-size: $font-size-base;
+        color: $color-text-lighter;
+        text-decoration: line-through;
+        margin-right: $spacing-sm;
+    }
+    
+    &--sale {
+        color: $color-danger;
+    }
+    
+    &__cuotas {
+        display: block;
+        font-size: $font-size-sm;
+        color: $color-success;
+        font-weight: $font-weight-regular;
+        margin-top: $spacing-xs;
+    }
+}
+
+// ============================================
+// SELECTOR DE TALLAS
+// ============================================
+.size-selector {
+    display: flex;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
+    margin: $spacing-md 0;
+    
+    &__label {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $color-text;
+        margin-bottom: $spacing-sm;
+        display: block;
+        width: 100%;
+    }
+    
+    &__option {
+        width: 42px;
+        height: 42px;
+        @include flex-center;
+        border: 2px solid #ddd;
+        border-radius: $border-radius-xs;
+        background: $color-white;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        cursor: pointer;
+        @include transition;
+        
+        &:hover:not(.size-selector__option--disabled) {
+            border-color: $color-secondary;
+        }
+        
+        &--active {
+            background-color: $color-secondary;
+            border-color: $color-secondary;
+            color: $color-white;
+        }
+        
+        &--disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+    }
+}
+
+// ============================================
+// SELECTOR DE COLORES
+// ============================================
+.color-selector {
+    display: flex;
+    gap: $spacing-sm;
+    margin: $spacing-md 0;
+    
+    &__label {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $color-text;
+        margin-bottom: $spacing-sm;
+        display: block;
+        width: 100%;
+    }
+    
+    &__option {
+        width: 32px;
+        height: 32px;
+        border-radius: $border-radius-circle;
+        border: 2px solid transparent;
+        cursor: pointer;
+        @include transition;
+        position: relative;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid transparent;
+            border-radius: $border-radius-circle;
+            @include transition;
+        }
+        
+        &:hover::after,
+        &--active::after {
+            border-color: $color-secondary;
+        }
+        
+        // Colores predefinidos
+        &--black { background-color: #000; }
+        &--white { background-color: #fff; border-color: #ddd; }
+        &--beige { background-color: #D4B896; }
+        &--brown { background-color: #8B4513; }
+        &--camel { background-color: #C19A6B; }
+        &--nude { background-color: #E3BC9A; }
+        &--red { background-color: #8B0000; }
+        &--burgundy { background-color: #722F37; }
+        &--navy { background-color: #1B2A4E; }
+        &--olive { background-color: #556B2F; }
+    }
+}
+
+// ============================================
+// CONTADOR DE CANTIDAD
+// ============================================
+.quantity-selector {
+    @include flex-center;
+    gap: 0;
+    border: 1px solid #ddd;
+    border-radius: $border-radius-xs;
+    display: inline-flex;
+    
+    &__btn {
+        width: 40px;
+        height: 40px;
+        @include flex-center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: $font-size-lg;
+        color: $color-text;
+        @include transition;
+        
+        &:hover {
+            background-color: $color-background;
+        }
+        
+        &:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    }
+    
+    &__input {
+        width: 50px;
+        height: 40px;
+        text-align: center;
+        border: none;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}
+
+// ============================================
+// BOTÓN DE FAVORITOS
+// ============================================
+.favorite-btn {
+    width: 44px;
+    height: 44px;
+    @include flex-center;
+    background: $color-white;
+    border: 1px solid #ddd;
+    border-radius: $border-radius-circle;
+    cursor: pointer;
+    @include transition;
+    font-size: $font-size-xl;
+    
+    &:hover {
+        border-color: $color-danger;
+        color: $color-danger;
+    }
+    
+    &--active {
+        background-color: $color-danger;
+        border-color: $color-danger;
+        color: $color-white;
+        
+        &:hover {
+            background-color: color.adjust($color-danger, $lightness: -10%);
+        }
+    }
+}
+
+// ============================================
+// CARRITO MINI (HEADER)
+// ============================================
+.cart-icon {
+    position: relative;
+    
+    &__count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 20px;
+        height: 20px;
+        @include flex-center;
+        background-color: $color-primary;
+        color: $color-white;
+        font-size: 11px;
+        font-weight: $font-weight-bold;
+        border-radius: $border-radius-circle;
+    }
+}
+
+// ============================================
+// BREADCRUMBS
+// ============================================
+.breadcrumbs {
+    padding: $spacing-md 0;
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        
+        &::after {
+            content: '/';
+            color: $color-text-lighter;
+        }
+        
+        &:last-child::after {
+            display: none;
+        }
+    }
+    
+    &__link {
+        color: $color-text-light;
+        text-decoration: none;
+        @include transition;
+        
+        &:hover {
+            color: $color-primary;
+        }
+    }
+    
+    &__current {
+        color: $color-text;
+        font-weight: $font-weight-medium;
+    }
+}
+
+// ============================================
+// LOADING SPINNER
+// ============================================
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $color-background;
+    border-top-color: $color-primary;
+    border-radius: $border-radius-circle;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// ============================================
+// TOAST / NOTIFICACIONES
+// ============================================
+.toast {
+    position: fixed;
+    bottom: $spacing-lg;
+    right: $spacing-lg;
+    padding: $spacing-md $spacing-lg;
+    background: $color-secondary;
+    color: $color-white;
+    border-radius: $border-radius-sm;
+    box-shadow: $shadow-lg;
+    z-index: $z-tooltip;
+    @include flex-center;
+    gap: $spacing-sm;
+    animation: slideIn 0.3s ease;
+    
+    &--success {
+        background-color: $color-success;
+    }
+    
+    &--error {
+        background-color: $color-danger;
+    }
+    
+    &__close {
+        background: none;
+        border: none;
+        color: $color-white;
+        cursor: pointer;
+        font-size: $font-size-lg;
+        opacity: 0.7;
+        @include transition;
+        
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+// ============================================
+// TABS
+// ============================================
+.tabs {
+    &__nav {
+        display: flex;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: $spacing-lg;
+        gap: $spacing-lg;
+    }
+    
+    &__btn {
+        padding: $spacing-md 0;
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        color: $color-text-light;
+        cursor: pointer;
+        @include transition;
+        
+        &:hover {
+            color: $color-text;
+        }
+        
+        &--active {
+            color: $color-primary;
+            border-bottom-color: $color-primary;
+        }
+    }
+    
+    &__content {
+        display: none;
+        
+        &--active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// ============================================
+// MODAL
+// ============================================
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-modal;
+    display: none;
+    
+    &--active {
+        display: block;
+    }
+    
+    &__backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+    }
+    
+    &__content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: $color-white;
+        border-radius: $border-radius-lg;
+        padding: $spacing-xl;
+        max-width: 500px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: modalIn 0.3s ease;
+    }
+    
+    &__close {
+        position: absolute;
+        top: $spacing-md;
+        right: $spacing-md;
+        width: 32px;
+        height: 32px;
+        @include flex-center;
+        background: none;
+        border: none;
+        font-size: $font-size-2xl;
+        color: $color-text-light;
+        cursor: pointer;
+        @include transition;
+        
+        &:hover {
+            color: $color-text;
+        }
+    }
+    
+    &__title {
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-light;
+        margin-bottom: $spacing-lg;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+// ============================================
+// EMPTY STATE
+// ============================================
+.empty-state {
+    text-align: center;
+    padding: $spacing-mega $spacing-lg;
+    
+    &__icon {
+        font-size: 64px;
+        margin-bottom: $spacing-lg;
+        opacity: 0.5;
+    }
+    
+    &__title {
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-light;
+        margin-bottom: $spacing-md;
+        color: $color-text;
+    }
+    
+    &__text {
+        color: $color-text-light;
+        margin-bottom: $spacing-lg;
+    }
+}

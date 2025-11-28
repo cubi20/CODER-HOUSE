@@ -1,10 +1,13 @@
-// _productos.scss
+// _productos.scss - CRUDAS Fashion Store
 @use 'variables' as *;
 @use 'mixins' as *;
 
+// ============================================
+// PRODUCTOS DESTACADOS (HOME)
+// ============================================
 .productos-destacados {
-    padding: 100px $spacing-md;
-    max-width: 1400px;
+    padding: $spacing-mega $spacing-md;
+    max-width: $max-width-content;
     margin: 0 auto;
     background-color: $color-white;
 
@@ -27,11 +30,19 @@
 }
 
 .producto-destacado {
-    @include card-base;
+    @include card-hover;
+    position: relative;
 
     &:hover {
         transform: translateY(-15px);
-        box-shadow: $shadow-xl;
+    }
+    
+    // Badge de nuevo/oferta
+    .badge {
+        position: absolute;
+        top: $spacing-md;
+        left: $spacing-md;
+        z-index: 10;
     }
 }
 
@@ -39,11 +50,31 @@
     width: 100%;
     height: 450px;
     @include image-zoom;
+    position: relative;
 
     img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        @include image-cover;
+    }
+    
+    // Overlay con acciones rápidas
+    .quick-actions {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: $spacing-md;
+        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        display: flex;
+        justify-content: center;
+        gap: $spacing-sm;
+        opacity: 0;
+        transform: translateY(10px);
+        @include transition;
+    }
+    
+    &:hover .quick-actions {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -52,111 +83,494 @@
     text-align: center;
 
     h3 {
-        font-size: 24px;
+        font-size: $font-size-2xl;
         font-weight: $font-weight-regular;
         margin-bottom: 15px;
         color: $color-text;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
-}
-
-.producto-precio {
-    font-size: 28px;
-    color: $color-primary;
-    font-weight: $font-weight-medium;
-    margin-bottom: 25px;
-}
-
-.producto-link {
-    display: inline-block;
-    @include button-base;
-    background-color: $color-secondary;
-    color: $color-white;
-
-    &:hover {
-        background-color: $color-primary;
-        color: $color-white;
+    
+    .producto-categoria {
+        font-size: $font-size-xs;
+        color: $color-text-light;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: $spacing-sm;
     }
 }
 
-// Galería de productos
+.producto-precio {
+    font-size: $font-size-3xl;
+    color: $color-primary;
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-xs;
+    
+    &--cuotas {
+        display: block;
+        font-size: $font-size-sm;
+        color: $color-success;
+        font-weight: $font-weight-regular;
+        margin-bottom: $spacing-lg;
+    }
+}
+
+.producto-link {
+    @include button-primary;
+}
+
+// ============================================
+// GALERÍA DE PRODUCTOS (PÁGINA PRODUCTOS)
+// ============================================
 .galeria {
     padding: $spacing-xl $spacing-md;
-    max-width: 1400px;
+    max-width: $max-width-content;
     margin: 0 auto;
 }
 
 .products-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: $spacing-lg;
 }
 
 .producto-item {
     @include transition;
+    
+    &[style*="display: none"] {
+        display: none !important;
+    }
 }
 
 .product-box {
-    @include card-base;
-    @include hover-shadow;
+    @include card-hover;
+    position: relative;
 
+    &:hover {
+        .product-box__overlay {
+            opacity: 1;
+        }
+    }
+    
     img {
         width: 100%;
-        height: 350px;
+        height: 380px;
         object-fit: cover;
     }
+    
+    // Overlay con acciones
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        @include flex-center;
+        gap: $spacing-sm;
+        opacity: 0;
+        @include transition;
+        
+        .btn-icon {
+            width: 44px;
+            height: 44px;
+            @include flex-center;
+            background: $color-white;
+            border: none;
+            border-radius: $border-radius-circle;
+            cursor: pointer;
+            @include transition;
+            
+            &:hover {
+                background: $color-primary;
+                color: $color-white;
+                transform: scale(1.1);
+            }
+        }
+    }
+    
+    // Badge
+    .badge {
+        position: absolute;
+        top: $spacing-md;
+        left: $spacing-md;
+        z-index: 5;
+    }
+    
+    // Favorito
+    .favorite-btn {
+        position: absolute;
+        top: $spacing-md;
+        right: $spacing-md;
+        z-index: 5;
+        width: 36px;
+        height: 36px;
+        font-size: $font-size-base;
+    }
 
+    .informacion {
+        padding: $spacing-lg;
+        text-align: center;
+    }
+    
     h3 {
-        font-size: 20px;
-        margin-bottom: $spacing-sm;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-regular;
+        margin-bottom: $spacing-xs;
         color: $color-text;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .categoria-tag {
+        font-size: $font-size-xs;
+        color: $color-text-light;
+        margin-bottom: $spacing-sm;
     }
 
     .precio {
-        font-size: 24px;
+        font-size: $font-size-2xl;
         color: $color-primary;
         font-weight: $font-weight-medium;
+        margin-bottom: $spacing-xs;
+        
+        &--original {
+            font-size: $font-size-sm;
+            color: $color-text-lighter;
+            text-decoration: line-through;
+            margin-right: $spacing-xs;
+        }
+    }
+    
+    .cuotas {
+        font-size: $font-size-sm;
+        color: $color-success;
         margin-bottom: $spacing-md;
     }
 
-    button {
-        @include button-base;
-        background-color: $color-secondary;
-        color: $color-white;
-
-        &:hover {
-            background-color: $color-primary;
+    button, .btn-comprar {
+        @include button-primary;
+        width: 100%;
+    }
+    
+    // Tallas disponibles
+    .tallas-preview {
+        display: flex;
+        justify-content: center;
+        gap: $spacing-xs;
+        margin-bottom: $spacing-md;
+        
+        span {
+            font-size: $font-size-xs;
+            color: $color-text-light;
+            padding: 2px 8px;
+            border: 1px solid #ddd;
+            border-radius: $border-radius-xs;
         }
     }
 }
 
-// Filtros
+// ============================================
+// FILTROS
+// ============================================
 .filtros-global {
     padding: $spacing-xl $spacing-md;
     text-align: center;
+    background-color: $color-background-alt;
 }
 
 .filtros-division {
     @include flex-center;
-    gap: 15px;
+    gap: $spacing-md;
     flex-wrap: wrap;
+    max-width: $max-width-narrow;
+    margin: 0 auto;
 }
 
 .boton {
-    padding: 10px 25px;
+    padding: $spacing-sm 25px;
     background: $color-white;
     border: 2px solid $color-secondary;
     border-radius: $border-radius-xl;
     cursor: pointer;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: $font-size-xs;
     letter-spacing: 1px;
+    font-weight: $font-weight-medium;
     @include transition;
 
     &:hover,
     &.active {
         background-color: $color-secondary;
         color: $color-white;
+    }
+}
+
+// Filtros avanzados
+.filtros-avanzados {
+    padding: $spacing-lg $spacing-md;
+    background: $color-white;
+    border-bottom: 1px solid #eee;
+    
+    .filtros-row {
+        @include flex-center;
+        flex-wrap: wrap;
+        gap: $spacing-lg;
+        max-width: $max-width-content;
+        margin: 0 auto;
+    }
+    
+    .filtro-group {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        
+        label {
+            font-size: $font-size-sm;
+            font-weight: $font-weight-medium;
+            color: $color-text;
+        }
+        
+        select {
+            @include input-base;
+            padding: 8px 30px 8px 15px;
+            min-width: 150px;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+        }
+    }
+    
+    .filtro-precio {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        
+        input {
+            @include input-base;
+            width: 100px;
+            padding: 8px 12px;
+        }
+        
+        span {
+            color: $color-text-light;
+        }
+    }
+    
+    .btn-limpiar {
+        @include button-outline;
+        padding: 8px 20px;
+        font-size: $font-size-xs;
+    }
+}
+
+// Contador de resultados
+.resultados-count {
+    text-align: center;
+    padding: $spacing-md;
+    color: $color-text-light;
+    font-size: $font-size-sm;
+    
+    strong {
+        color: $color-text;
+    }
+}
+
+// ============================================
+// PRODUCTO INDIVIDUAL (DETALLE)
+// ============================================
+.producto-detalle {
+    max-width: $max-width-narrow;
+    margin: 0 auto;
+    padding: $spacing-xl $spacing-md;
+    
+    .producto-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $spacing-xxl;
+        
+        @include respond-to(laptop) {
+            grid-template-columns: 1fr;
+            gap: $spacing-xl;
+        }
+    }
+}
+
+.producto-galeria {
+    &__main {
+        width: 100%;
+        height: 600px;
+        border-radius: $border-radius-md;
+        overflow: hidden;
+        margin-bottom: $spacing-md;
+        
+        img {
+            @include image-cover;
+        }
+    }
+    
+    &__thumbs {
+        display: flex;
+        gap: $spacing-sm;
+        
+        img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: $border-radius-xs;
+            cursor: pointer;
+            border: 2px solid transparent;
+            @include transition;
+            
+            &:hover,
+            &.active {
+                border-color: $color-primary;
+            }
+        }
+    }
+}
+
+.producto-detalle-info {
+    h1 {
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-light;
+        margin-bottom: $spacing-sm;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    
+    .categoria {
+        font-size: $font-size-sm;
+        color: $color-text-light;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: $spacing-lg;
+    }
+    
+    .precio-container {
+        margin-bottom: $spacing-lg;
+        padding-bottom: $spacing-lg;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .descripcion {
+        margin-bottom: $spacing-lg;
+        
+        h4 {
+            font-size: $font-size-base;
+            font-weight: $font-weight-medium;
+            margin-bottom: $spacing-sm;
+            text-transform: uppercase;
+        }
+        
+        p {
+            color: $color-text-light;
+            line-height: 1.8;
+        }
+    }
+    
+    .acciones {
+        display: flex;
+        gap: $spacing-md;
+        margin-top: $spacing-xl;
+        
+        .btn-agregar {
+            @include button-primary;
+            flex: 1;
+            padding: 15px 30px;
+        }
+        
+        .btn-favorito {
+            width: 54px;
+            height: 54px;
+        }
+    }
+    
+    .info-adicional {
+        margin-top: $spacing-xl;
+        padding-top: $spacing-lg;
+        border-top: 1px solid #eee;
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            margin-bottom: $spacing-md;
+            font-size: $font-size-sm;
+            color: $color-text-light;
+            
+            .icon {
+                font-size: $font-size-lg;
+            }
+        }
+    }
+}
+
+// Productos relacionados
+.productos-relacionados {
+    padding: $spacing-xxxl $spacing-md;
+    background-color: $color-background;
+    
+    h2 {
+        text-align: center;
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-light;
+        margin-bottom: $spacing-xxl;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    
+    .productos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: $spacing-lg;
+        max-width: $max-width-content;
+        margin: 0 auto;
+    }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@include respond-to(laptop) {
+    .productos-destacados h2 {
+        font-size: $font-size-4xl;
+    }
+
+    .destacados-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .producto-imagen {
+        height: 400px;
+    }
+    
+    .products-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .product-box img {
+        height: 300px;
+    }
+}
+
+@include respond-to(mobile) {
+    .products-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .filtros-avanzados .filtros-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filtro-group {
+        width: 100%;
+        
+        select {
+            flex: 1;
+        }
     }
 }

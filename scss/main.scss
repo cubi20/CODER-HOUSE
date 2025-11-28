@@ -1,40 +1,86 @@
-// main.scss - Archivo principal
-// Compilar con: sass scss/main.scss css/main.css
+// main.scss - CRUDAS Fashion Store
+// Archivo principal - Compilar con: sass scss/main.scss css/main.css --watch
 
-// IMPORTANTE: Todos los @use DEBEN estar al principio
+// ============================================
+// IMPORTS (DEBEN ESTAR AL PRINCIPIO)
+// ============================================
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'components';
 @use 'navbar';
 @use 'hero';
 @use 'productos';
+@use 'colecciones';
+@use 'pages';
 
-// Reset
-* {
+// ============================================
+// RESET Y BASE
+// ============================================
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-// Estilos del body
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: $font-family;
     background-color: $color-background;
     color: $color-text;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-// Main
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+// ============================================
+// LAYOUT
+// ============================================
 main {
     margin-top: $navbar-height;
 }
 
-// Secciones adicionales
+.container {
+    max-width: $max-width-content;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+}
+
+.container-narrow {
+    max-width: $max-width-narrow;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+}
+
+// ============================================
+// TÍTULOS DE SECCIÓN
+// ============================================
 .titulo {
     padding: $spacing-xxxl $spacing-md;
     text-align: center;
-    background: linear-gradient(135deg, rgba(198, 110, 12, 0.05), rgba(249, 241, 230, 0.8));
+    background: linear-gradient(135deg, rgba($color-primary, 0.05), rgba($color-background, 0.8));
 
     h1 {
-        font-size: 72px;
+        font-size: $font-size-6xl;
         font-weight: $font-weight-thin;
         letter-spacing: 8px;
         margin-bottom: $spacing-md;
@@ -44,22 +90,24 @@ main {
 
     h2,
     p {
-        font-size: 20px;
+        font-size: $font-size-xl;
         color: $color-text-light;
         font-weight: $font-weight-light;
         margin-bottom: $spacing-xl;
     }
 }
 
-// Categorías
+// ============================================
+// CATEGORÍAS
+// ============================================
 .categoria-completa {
     padding: $spacing-xxl $spacing-md;
-    max-width: 1200px;
+    max-width: $max-width-narrow;
     margin: 0 auto;
 
     h2 {
         text-align: center;
-        font-size: 36px;
+        font-size: $font-size-4xl;
         font-weight: $font-weight-light;
         margin-bottom: 50px;
         text-transform: uppercase;
@@ -79,17 +127,15 @@ main {
     overflow: hidden;
     border-radius: $border-radius-sm;
     @include transition;
+    height: 450px;
 
     a {
-        text-decoration: none;
-        color: $color-text;
+        display: block;
+        height: 100%;
     }
 
     img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-        border-radius: $border-radius-sm;
+        @include image-cover;
         @include transition(transform, $transition-slow);
     }
 
@@ -101,6 +147,7 @@ main {
 .imagen {
     margin: 0;
     position: relative;
+    height: 100%;
 }
 
 .descripcion {
@@ -109,20 +156,28 @@ main {
     left: 0;
     right: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    padding: $spacing-lg;
+    padding: $spacing-xl;
     text-align: center;
 
     h3 {
         color: $color-white;
-        font-size: 24px;
+        font-size: $font-size-2xl;
         font-weight: $font-weight-light;
         text-transform: uppercase;
         letter-spacing: 2px;
         margin: 0;
     }
+    
+    p {
+        color: rgba(255,255,255,0.8);
+        font-size: $font-size-sm;
+        margin-top: $spacing-sm;
+    }
 }
 
-// Proceso de compra
+// ============================================
+// PROCESO DE COMPRA
+// ============================================
 .proceso-compra {
     background-color: rgba(255, 255, 255, 0.9);
     padding: $spacing-xxxl $spacing-md;
@@ -130,7 +185,7 @@ main {
 
     h2 {
         text-align: center;
-        font-size: 36px;
+        font-size: $font-size-4xl;
         font-weight: $font-weight-light;
         margin-bottom: $spacing-xxl;
         text-transform: uppercase;
@@ -161,19 +216,34 @@ main {
         box-shadow: $shadow-xl;
     }
 
+    .paso-numero {
+        width: 50px;
+        height: 50px;
+        @include flex-center;
+        background-color: $color-primary;
+        color: $color-white;
+        border-radius: $border-radius-circle;
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        margin: 0 auto $spacing-md;
+    }
+
     h4 {
-        color: $color-primary;
-        font-size: 20px;
-        margin-bottom: 15px;
+        color: $color-text;
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-sm;
+        font-weight: $font-weight-medium;
     }
 
     p {
         color: $color-text-light;
-        font-size: 14px;
+        font-size: $font-size-sm;
     }
 }
 
-// Newsletter
+// ============================================
+// NEWSLETTER
+// ============================================
 .newsletter {
     max-width: 600px;
     margin: $spacing-xxxl auto;
@@ -184,9 +254,10 @@ main {
     text-align: center;
 
     h3 {
-        font-size: 28px;
-        margin-bottom: 15px;
+        font-size: $font-size-3xl;
+        margin-bottom: $spacing-sm;
         color: $color-text;
+        font-weight: $font-weight-light;
     }
 
     p {
@@ -203,30 +274,17 @@ main {
 
     input {
         flex: 1;
-        padding: 12px 20px;
-        border: 1px solid #ddd;
-        border-radius: $border-radius-xl;
-        font-size: 14px;
-        outline: none;
-        @include transition;
-
-        &:focus {
-            border-color: $color-primary;
-        }
+        @include input-base;
     }
 
     button {
-        @include button-base;
-        background-color: $color-secondary;
-        color: $color-white;
-
-        &:hover {
-            background-color: $color-primary;
-        }
+        @include button-primary;
     }
 }
 
-// Información
+// ============================================
+// INFORMACIÓN (ENVÍOS, ETC)
+// ============================================
 .informacion {
     background-color: #f8f9fa;
     padding: $spacing-xxl $spacing-md;
@@ -236,7 +294,7 @@ main {
 .info-container {
     @include flex-center;
     flex-wrap: wrap;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     gap: $spacing-xl;
 }
@@ -245,25 +303,34 @@ main {
     flex: 1;
     min-width: 250px;
     text-align: center;
+    padding: $spacing-lg;
+
+    .icon {
+        font-size: 40px;
+        margin-bottom: $spacing-md;
+    }
 
     h4 {
-        font-size: 20px;
+        font-size: $font-size-lg;
         margin-bottom: $spacing-sm;
         color: $color-text;
+        font-weight: $font-weight-medium;
     }
 
     p {
         color: $color-text-light;
-        font-size: 14px;
+        font-size: $font-size-sm;
     }
 }
 
-// Página Nosotros
+// ============================================
+// PÁGINA NOSOTROS
+// ============================================
 .philosophy-section {
     display: flex;
     align-items: center;
     gap: $spacing-xxl;
-    max-width: 1200px;
+    max-width: $max-width-narrow;
     margin: $spacing-xxl auto;
     padding: $spacing-xl;
 }
@@ -272,7 +339,7 @@ main {
     flex: 1;
 
     h2 {
-        font-size: 36px;
+        font-size: $font-size-4xl;
         margin-bottom: $spacing-lg;
         font-weight: $font-weight-light;
         text-transform: uppercase;
@@ -280,7 +347,7 @@ main {
     }
 
     p {
-        font-size: 16px;
+        font-size: $font-size-base;
         line-height: 1.8;
         color: $color-text-light;
         margin-bottom: $spacing-md;
@@ -303,7 +370,7 @@ main {
 
     h2 {
         text-align: center;
-        font-size: 36px;
+        font-size: $font-size-4xl;
         margin-bottom: $spacing-xxl;
         font-weight: $font-weight-light;
         text-transform: uppercase;
@@ -325,28 +392,35 @@ main {
     background: $color-white;
     border-radius: $border-radius-md;
     box-shadow: $shadow-sm;
+    @include transition;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: $shadow-xl;
+    }
 
     h3 {
-        font-size: 24px;
-        margin-bottom: 15px;
+        font-size: $font-size-2xl;
+        margin-bottom: $spacing-sm;
         color: $color-primary;
+        font-weight: $font-weight-light;
     }
 
     p {
         color: $color-text-light;
-        font-size: 14px;
+        font-size: $font-size-sm;
         line-height: 1.6;
     }
 }
 
 .timeline-section {
     padding: $spacing-xxl $spacing-md;
-    max-width: 800px;
+    max-width: $max-width-text;
     margin: 0 auto;
 
     h2 {
         text-align: center;
-        font-size: 36px;
+        font-size: $font-size-4xl;
         margin-bottom: $spacing-xxl;
         font-weight: $font-weight-light;
         text-transform: uppercase;
@@ -384,35 +458,38 @@ main {
         top: 30px;
         width: 10px;
         height: 10px;
-        border-radius: 50%;
+        border-radius: $border-radius-circle;
         background-color: $color-primary;
     }
 
     h4 {
-        font-size: 20px;
+        font-size: $font-size-lg;
         color: $color-primary;
         margin-bottom: $spacing-sm;
+        font-weight: $font-weight-medium;
     }
 
     p {
         color: $color-text-light;
-        font-size: 14px;
+        font-size: $font-size-sm;
     }
 }
 
-// Footer
+// ============================================
+// FOOTER
+// ============================================
 footer {
     background-color: $color-secondary;
     color: $color-white;
     padding: $spacing-xxl $spacing-md $spacing-lg;
-    margin-top: 100px;
+    margin-top: $spacing-mega;
 }
 
 .footer-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    max-width: 1200px;
+    max-width: $max-width-narrow;
     margin: 0 auto $spacing-xl;
     gap: $spacing-xl;
 }
@@ -422,16 +499,17 @@ footer {
     min-width: 250px;
 
     h5 {
-        font-size: 18px;
+        font-size: $font-size-lg;
         margin-bottom: $spacing-md;
         color: $color-primary;
         text-transform: uppercase;
         letter-spacing: 1px;
+        font-weight: $font-weight-medium;
     }
 
     p {
         color: $color-text-lighter;
-        font-size: 14px;
+        font-size: $font-size-sm;
         line-height: 1.8;
     }
 
@@ -444,8 +522,7 @@ footer {
 
             a {
                 color: $color-text-lighter;
-                text-decoration: none;
-                font-size: 14px;
+                font-size: $font-size-sm;
                 @include transition;
 
                 &:hover {
@@ -462,8 +539,7 @@ footer {
 
     a {
         color: $color-text-lighter;
-        text-decoration: none;
-        font-size: 16px;
+        font-size: $font-size-base;
         @include transition;
 
         &:hover {
@@ -475,85 +551,171 @@ footer {
 
 .footer-bottom {
     text-align: center;
+    padding-top: $spacing-lg;
+    border-top: 1px solid rgba(255,255,255,0.1);
 
     p {
         margin-bottom: $spacing-sm;
         color: $color-text-lighter;
-        font-size: 14px;
+        font-size: $font-size-sm;
+    }
+    
+    .footer-legal {
+        font-size: $font-size-xs;
+        margin-top: $spacing-sm;
+        
+        a {
+            color: $color-text-lighter;
+            text-decoration: none;
+            @include transition;
+            
+            &:hover {
+                color: $color-primary;
+            }
+        }
     }
 
-    small a {
-        color: $color-text-lighter;
-        text-decoration: none;
-        font-size: 12px;
-        @include transition;
-
-        &:hover {
-            color: $color-primary;
+    .metodos-pago {
+        display: flex;
+        justify-content: center;
+        gap: $spacing-md;
+        margin-top: $spacing-md;
+        
+        img {
+            height: 30px;
+            opacity: 0.7;
+            @include transition;
+            
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 }
 
-// Media Queries (Responsive)
-@include respond-to(tablet) {
-    .navbar {
-        padding: $spacing-sm $spacing-md;
-    }
-
-    .navbar-brand {
-        position: static;
-        transform: none;
-    }
-
-    .navbar-right {
-        display: none;
-    }
-
-    .navbar-nav {
-        align-items: center;
-        margin-top: $spacing-md;
-        gap: $spacing-md;
-    }
-
-    .hero-section {
-        background-position: center 10%;
-        min-height: 100vh;
-    }
-
-    .hero-content {
-        h1 {
-            font-size: 48px;
-            letter-spacing: 8px;
-        }
-
-        p {
-            font-size: 16px;
-            letter-spacing: 2px;
+// ============================================
+// PÁGINA DE CONTACTO
+// ============================================
+.contacto-section {
+    padding: $spacing-xxl $spacing-md;
+    max-width: $max-width-narrow;
+    margin: 0 auto;
+    
+    .contacto-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $spacing-xxl;
+        
+        @include respond-to(laptop) {
+            grid-template-columns: 1fr;
         }
     }
+}
 
-    .hero-button {
-        padding: 12px 35px;
-        font-size: 12px;
+.contacto-info {
+    h2 {
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-light;
+        margin-bottom: $spacing-lg;
+        text-transform: uppercase;
+        letter-spacing: 2px;
     }
-
-    .productos-destacados h2 {
-        font-size: 32px;
+    
+    p {
+        color: $color-text-light;
+        line-height: 1.8;
+        margin-bottom: $spacing-xl;
     }
-
-    .destacados-container {
-        grid-template-columns: 1fr;
+    
+    .info-items {
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: $spacing-md;
+            margin-bottom: $spacing-lg;
+            
+            .icon {
+                font-size: $font-size-2xl;
+                color: $color-primary;
+            }
+            
+            .content {
+                h4 {
+                    font-size: $font-size-base;
+                    font-weight: $font-weight-medium;
+                    margin-bottom: $spacing-xs;
+                }
+                
+                p, a {
+                    color: $color-text-light;
+                    font-size: $font-size-sm;
+                }
+                
+                a:hover {
+                    color: $color-primary;
+                }
+            }
+        }
     }
+}
 
+.contacto-form {
+    background: $color-white;
+    padding: $spacing-xl;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-md;
+    
+    h3 {
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-light;
+        margin-bottom: $spacing-lg;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .form-group {
+        margin-bottom: $spacing-md;
+        
+        label {
+            display: block;
+            font-size: $font-size-sm;
+            font-weight: $font-weight-medium;
+            margin-bottom: $spacing-xs;
+            color: $color-text;
+        }
+        
+        input,
+        textarea,
+        select {
+            width: 100%;
+            @include input-base;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+    }
+    
+    .btn-enviar {
+        @include button-primary;
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+// ============================================
+// MEDIA QUERIES GENERALES
+// ============================================
+@include respond-to(laptop) {
     .titulo {
         h1 {
-            font-size: 38px;
+            font-size: $font-size-4xl;
             letter-spacing: 3px;
         }
 
-        h2,
-        p {
-            font-size: 16px;
+        h2, p {
+            font-size: $font-size-base;
         }
     }
 
@@ -562,7 +724,7 @@ footer {
     .values-section h2,
     .timeline-section h2,
     .philosophy-content h2 {
-        font-size: 28px;
+        font-size: $font-size-3xl;
         margin-bottom: $spacing-xl;
     }
 
@@ -575,9 +737,12 @@ footer {
         flex-direction: column;
     }
 
-    .categoria-division,
-    .products-container {
+    .categoria-division {
         grid-template-columns: 1fr;
+    }
+    
+    .categoria-boxes {
+        height: 350px;
     }
 
     .footer-container {
@@ -596,19 +761,15 @@ footer {
 }
 
 @include respond-to(mobile) {
-    .hero-section {
-        background-position: center 5%;
+    .titulo h1 {
+        font-size: $font-size-3xl;
     }
-
-    .hero-content {
-        h1 {
-            font-size: 36px;
-            letter-spacing: 5px;
-        }
-
-        p {
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
+    
+    .categoria-boxes {
+        height: 300px;
+    }
+    
+    .pasos {
+        min-width: 100%;
     }
 }

@@ -3,71 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CRUDAS - Nuestros productos: carteras, calzado y tops únicos">
+    <meta name="description" content="Catálogo de productos CRUDAS - Carteras, calzado y tops únicos. Moda femenina con estilo.">
+    <meta name="keywords" content="carteras mujer, calzado femenino, tops, moda argentina, comprar ropa online">
     <meta name="author" content="CRUDAS Fashion">
     
-    <!-- BOOTSTRAP CSS -->
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/main.css">
     
-    <!-- GOOGLE FONTS -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     
-    <title>Productos - CRUDAS</title>
+    <title>Productos - CRUDAS | Moda Femenina</title>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <!-- Botón hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Menú -->
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">HOME</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="productos.html">PRODUCTOS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="nosotros.html">NOSOTROS</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                COLECCIONES
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#verano">Verano 2025</a></li>
-                                <li><a class="dropdown-item" href="#invierno">Invierno 2025</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#limitada">Edición Limitada</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="productos.html">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="colecciones.html">Colecciones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
 
-                <!-- Logo -->
                 <a class="navbar-brand" href="index.html">
                     <img src="img/logo.jpg" alt="CRUDAS Logo" class="logo-img">
                 </a>
 
-                <!-- Buscador e iconos -->
                 <div class="navbar-right">
-                    <form class="search-form" id="searchForm">
+                    <form class="search-form">
                         <input type="search" placeholder="Buscar...">
-                        <button type="submit">Buscar</button>
+                        <button type="submit">🔍</button>
                     </form>
-                    
                     <div class="navbar-icons">
                         <a href="#cuenta">👤</a>
-                        <a href="#carrito">🛒</a>
+                        <a href="#favoritos">♡</a>
+                        <a href="#carrito" class="cart-icon">🛒<span class="cart-icon__count">0</span></a>
                     </div>
                 </div>
             </div>
@@ -75,13 +57,22 @@
     </header>
 
     <main>
+        <!-- Título -->
         <section class="titulo">
             <h1>Nuestros Productos</h1>
-            <p>Descubre nuestra colección exclusiva</p>
+            <p>Descubrí nuestra colección exclusiva de moda femenina</p>
         </section>
 
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs container" aria-label="Breadcrumb">
+            <ol class="breadcrumbs__list">
+                <li class="breadcrumbs__item"><a href="index.html" class="breadcrumbs__link">Home</a></li>
+                <li class="breadcrumbs__item"><span class="breadcrumbs__current">Productos</span></li>
+            </ol>
+        </nav>
+
         <!-- Filtros -->
-        <section class="filtros-global">
+        <section class="filtros-global" aria-label="Filtros de productos">
             <div class="filtros-division">
                 <button type="button" class="boton active" data-filter="todos">Todos</button>
                 <button type="button" class="boton" data-filter="carteras">Carteras</button>
@@ -90,131 +81,377 @@
             </div>
         </section>
 
+        <!-- Filtros Avanzados -->
+        <div class="filtros-avanzados">
+            <div class="filtros-row">
+                <div class="filtro-group">
+                    <label for="ordenar">Ordenar por:</label>
+                    <select id="ordenar">
+                        <option value="relevancia">Relevancia</option>
+                        <option value="precio-asc">Menor precio</option>
+                        <option value="precio-desc">Mayor precio</option>
+                        <option value="nuevos">Más nuevos</option>
+                    </select>
+                </div>
+                <div class="filtro-group">
+                    <label for="talle">Talle:</label>
+                    <select id="talle">
+                        <option value="">Todos</option>
+                        <option value="xs">XS</option>
+                        <option value="s">S</option>
+                        <option value="m">M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                    </select>
+                </div>
+                <div class="filtro-precio">
+                    <label>Precio:</label>
+                    <input type="number" placeholder="Min" id="precioMin">
+                    <span>-</span>
+                    <input type="number" placeholder="Max" id="precioMax">
+                </div>
+                <button class="btn-limpiar" type="button">Limpiar filtros</button>
+            </div>
+        </div>
+
+        <!-- Contador de resultados -->
+        <div class="resultados-count">
+            Mostrando <strong id="countResultados">15</strong> productos
+        </div>
+
         <!-- Galería de Productos -->
-        <section class="galeria">
+        <section class="galeria" aria-label="Galería de productos">
             <div class="products-container" id="productosGaleria">
-                <!-- CARTERAS -->
-                <article class="producto-item" data-categoria="carteras" id="carteras">
+                
+                <!-- ========== CARTERAS ========== -->
+                <article class="producto-item" data-categoria="carteras" data-precio="89990" id="carteras">
                     <div class="product-box">
-                        <img src="img/cartera1.jpg" alt="Cartera Minimal Black">
+                        <span class="badge badge--new">Nuevo</span>
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/cartera1.jpg" alt="Cartera Rafia Natural">
                         <div class="informacion">
-                            <h3>Cartera Minimal Black</h3>
-                            <p class="precio">$25,000</p>
-                            <button>Comprar</button>
+                            <span class="categoria-tag">Carteras</span>
+                            <h3>Cartera Rafia</h3>
+                            <div class="tallas-preview">
+                                <span>Única</span>
+                            </div>
+                            <p class="precio">$89.990</p>
+                            <p class="cuotas">3 cuotas sin interés de $29.997</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
                         </div>
                     </div>
                 </article>
                 
-                <article class="producto-item" data-categoria="carteras">
+                <article class="producto-item" data-categoria="carteras" data-precio="109990">
                     <div class="product-box">
-                        <img src="img/cartera2.jpg" alt="Cartera Statement">
+                        <span class="badge badge--bestseller">Top Ventas</span>
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/cartera2.jpg" alt="Cartera Statement Camel">
                         <div class="informacion">
-                            <h3>Cartera Statement</h3>
-                            <p class="precio">$32,000</p>
-                            <button>Comprar</button>
+                            <span class="categoria-tag">Carteras</span>
+                            <h3>Cartera Statement Camel</h3>
+                            <div class="tallas-preview">
+                                <span>Única</span>
+                            </div>
+                            <p class="precio">$109.990</p>
+                            <p class="cuotas">6 cuotas sin interés de $18.332</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
                         </div>
                     </div>
                 </article>
                 
-                <article class="producto-item" data-categoria="carteras">
+                <article class="producto-item" data-categoria="carteras" data-precio="79990">
                     <div class="product-box">
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
                         <img src="img/cartera3.jpg" alt="Cartera Urban">
                         <div class="informacion">
+                            <span class="categoria-tag">Carteras</span>
                             <h3>Cartera Urban</h3>
-                            <p class="precio">$28,000</p>
-                            <button>Comprar</button>
+                            <div class="tallas-preview">
+                                <span>Única</span>
+                            </div>
+                            <p class="precio">$79.990</p>
+                            <p class="cuotas">3 cuotas sin interés de $26.663</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
                         </div>
                     </div>
                 </article>
 
-                <!-- CALZADO -->
-                <article class="producto-item" data-categoria="calzado" id="calzado">
+                <article class="producto-item" data-categoria="carteras" data-precio="129990">
                     <div class="product-box">
-                        <img src="img/calzado1.jpg" alt="Zapatos Classic">
+                        <span class="badge badge--limited">Edición Limitada</span>
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/cartera4.jpg" alt="Cartera Luxe Burgundy">
                         <div class="informacion">
-                            <h3>Zapatos Classic</h3>
-                            <p class="precio">$45,000</p>
-                            <button>Comprar</button>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="producto-item" data-categoria="calzado">
-                    <div class="product-box">
-                        <img src="img/calzado2.jpg" alt="Botas Statement">
-                        <div class="informacion">
-                            <h3>Botas Statement</h3>
-                            <p class="precio">$55,000</p>
-                            <button>Comprar</button>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="producto-item" data-categoria="calzado">
-                    <div class="product-box">
-                        <img src="img/calzado3.jpg" alt="Sneakers Urban">
-                        <div class="informacion">
-                            <h3>Sneakers Urban</h3>
-                            <p class="precio">$38,000</p>
-                            <button>Comprar</button>
+                            <span class="categoria-tag">Carteras</span>
+                            <h3>Cartera Luxe Burgundy</h3>
+                            <div class="tallas-preview">
+                                <span>Única</span>
+                            </div>
+                            <p class="precio">$129.990</p>
+                            <p class="cuotas">6 cuotas sin interés de $21.665</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
                         </div>
                     </div>
                 </article>
 
-                <!-- TOPS -->
-                <article class="producto-item" data-categoria="tops" id="tops">
+                <article class="producto-item" data-categoria="carteras" data-precio="69990">
                     <div class="product-box">
-                        <img src="img/top.jpg" alt="Top Minimal">
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/cartera5.jpg" alt="Clutch Noche Dorado">
                         <div class="informacion">
-                            <h3>Top Minimal</h3>
-                            <p class="precio">$12,000</p>
-                            <button>Comprar</button>
+                            <span class="categoria-tag">Carteras</span>
+                            <h3>Clutch Noche Dorado</h3>
+                            <div class="tallas-preview">
+                                <span>Única</span>
+                            </div>
+                            <p class="precio">$69.990</p>
+                            <p class="cuotas">3 cuotas sin interés de $23.330</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========== CALZADO ========== -->
+                <article class="producto-item" data-categoria="calzado" data-precio="139990" id="calzado">
+                    <div class="product-box">
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/calzado1.jpg" alt="Stilettos Classic Negro">
+                        <div class="informacion">
+                            <span class="categoria-tag">Calzado</span>
+                            <h3>Stilettos Classic Negro</h3>
+                            <div class="tallas-preview">
+                                <span>35</span>
+                                <span>36</span>
+                                <span>37</span>
+                                <span>38</span>
+                                <span>39</span>
+                                <span>40</span>
+                            </div>
+                            <p class="precio">$139.990</p>
+                            <p class="cuotas">6 cuotas sin interés de $23.332</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
                         </div>
                     </div>
                 </article>
                 
-                <article class="producto-item" data-categoria="tops">
+                <article class="producto-item" data-categoria="calzado" data-precio="159990">
                     <div class="product-box">
-                        <img src="img/top2.jpg" alt="Top Statement">
+                        <span class="badge badge--bestseller">Top Ventas</span>
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/calzado2.jpg" alt="Botas Statement Cuero">
                         <div class="informacion">
-                            <h3>Top Statement</h3>
-                            <p class="precio">$15,000</p>
-                            <button>Comprar</button>
+                            <span class="categoria-tag">Calzado</span>
+                            <h3>Zapatilla Jazy</h3>
+                            <div class="tallas-preview">
+                                <span>35</span>
+                                <span>36</span>
+                                <span>37</span>
+                                <span>38</span>
+                                <span>39</span>
+                            </div>
+                            <p class="precio">$159.990</p>
+                            <p class="cuotas">6 cuotas sin interés de $26.665</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
                         </div>
                     </div>
                 </article>
                 
-                <article class="producto-item" data-categoria="tops">
+                <article class="producto-item" data-categoria="calzado" data-precio="119990">
                     <div class="product-box">
-                        <img src="img/top3.jpg" alt="Top Urban">
+                        <span class="badge badge--new">Nuevo</span>
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/calzado3.jpg" alt="Zapatilla Alex">
                         <div class="informacion">
-                            <h3>Top Urban</h3>
-                            <p class="precio">$13,500</p>
-                            <button>Comprar</button>
+                            <span class="categoria-tag">Calzado</span>
+                            <h3>Zapatilla Alex</h3>
+                            <div class="tallas-preview">
+                                <span>35</span>
+                                <span>36</span>
+                                <span>37</span>
+                                <span>38</span>
+                                <span>39</span>
+                                <span>40</span>
+                            </div>
+                            <p class="precio">$119.990</p>
+                            <p class="cuotas">6 cuotas sin interés de $19.998</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
                         </div>
                     </div>
                 </article>
+
+                <article class="producto-item" data-categoria="calzado" data-precio="179990">
+                    <div class="product-box">
+                        <span class="badge badge--limited">Edición Limitada</span>
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/calzado5.jpg" alt="Botas Texanas Camel">
+                        <div class="informacion">
+                            <span class="categoria-tag">Calzado</span>
+                            <h3>Bota Escorpio Negro</h3>
+                            <div class="tallas-preview">
+                                <span>35</span>
+                                <span>36</span>
+                                <span>37</span>
+                                <span>38</span>
+                            </div>
+                            <p class="precio">$179.990</p>
+                            <p class="cuotas">6 cuotas sin interés de $29.998</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="producto-item" data-categoria="calzado" data-precio="89990">
+                    <div class="product-box">
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/calzado4.jpg" alt="Sandalias Minimal Nude">
+                        <div class="informacion">
+                            <span class="categoria-tag">Calzado</span>
+                            <h3>Sandalias Minimal Nude</h3>
+                            <div class="tallas-preview">
+                                <span>35</span>
+                                <span>36</span>
+                                <span>37</span>
+                                <span>38</span>
+                                <span>39</span>
+                            </div>
+                            <p class="precio">$89.990</p>
+                            <p class="cuotas">3 cuotas sin interés de $29.997</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========== TOPS ========== -->
+                <article class="producto-item" data-categoria="tops" data-precio="35990" id="tops">
+                    <div class="product-box">
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/top.jpg" alt="Top Básico Negro">
+                        <div class="informacion">
+                            <span class="categoria-tag">Tops</span>
+                            <h3>Top Lucy</h3>
+                            <div class="tallas-preview">
+                                <span>XS</span>
+                                <span>S</span>
+                                <span>M</span>
+                                <span>L</span>
+                                <span>XL</span>
+                            </div>
+                            <p class="precio">$35.990</p>
+                            <p class="cuotas">3 cuotas sin interés de $11.997</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="producto-item" data-categoria="tops" data-precio="45990">
+                    <div class="product-box">
+                        <span class="badge badge--bestseller">Top Ventas</span>
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/top2.jpg" alt="Top Statement Blanco">
+                        <div class="informacion">
+                            <span class="categoria-tag">Tops</span>
+                            <h3>Top Básico Negro</h3>
+                            <div class="tallas-preview">
+                                <span>XS</span>
+                                <span>S</span>
+                                <span>M</span>
+                                <span>L</span>
+                            </div>
+                            <p class="precio">$45.990</p>
+                            <p class="cuotas">3 cuotas sin interés de $15.330</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="producto-item" data-categoria="tops" data-precio="39990">
+                    <div class="product-box">
+                        <span class="badge badge--new">Nuevo</span>
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/top3.jpg" alt="Crop Top Urban">
+                        <div class="informacion">
+                            <span class="categoria-tag">Tops</span>
+                            <h3>Crop Top Urban</h3>
+                            <div class="tallas-preview">
+                                <span>XS</span>
+                                <span>S</span>
+                                <span>M</span>
+                                <span>L</span>
+                            </div>
+                            <p class="precio">$39.990</p>
+                            <p class="cuotas">3 cuotas sin interés de $13.330</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="producto-item" data-categoria="tops" data-precio="59990">
+                    <div class="product-box">
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/top5.jpg" alt="Blusa Seda Champagne">
+                        <div class="informacion">
+                            <span class="categoria-tag">Tops</span>
+                            <h3>Blusa Seda Champagne</h3>
+                            <div class="tallas-preview">
+                                <span>S</span>
+                                <span>M</span>
+                                <span>L</span>
+                                <span>XL</span>
+                            </div>
+                            <p class="precio">$59.990</p>
+                            <p class="cuotas">3 cuotas sin interés de $19.997</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="producto-item" data-categoria="tops" data-precio="49990">
+                    <div class="product-box">
+                        <span class="badge badge--limited">Edición Limitada</span>
+                        <button class="favorite-btn" aria-label="Agregar a favoritos">♡</button>
+                        <img src="img/top4.jpg" alt="Top Corsé Negro">
+                        <div class="informacion">
+                            <span class="categoria-tag">Tops</span>
+                            <h3>Top Corsé Negro</h3>
+                            <div class="tallas-preview">
+                                <span>XS</span>
+                                <span>S</span>
+                                <span>M</span>
+                            </div>
+                            <p class="precio">$49.990</p>
+                            <p class="cuotas">3 cuotas sin interés de $16.663</p>
+                            <button class="btn-comprar">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </section>
 
-        <div class="informacion">
+        <!-- Información de Servicios -->
+        <section class="informacion" aria-label="Beneficios de compra">
             <div class="info-container">
                 <div class="items">
+                    <div class="icon">🚚</div>
                     <h4>Envío Gratis</h4>
-                    <p>En compras mayores a $50,000</p>
+                    <p>En compras mayores a $150.000</p>
                 </div>
                 <div class="items">
-                    <h4>Cambios y Devoluciones</h4>
+                    <div class="icon">🔄</div>
+                    <h4>Cambios Gratis</h4>
                     <p>Hasta 30 días después de tu compra</p>
                 </div>
                 <div class="items">
-                    <h4>Pago Seguro</h4>
-                    <p>Todas las formas de pago</p>
+                    <div class="icon">💳</div>
+                    <h4>Cuotas Sin Interés</h4>
+                    <p>Hasta 6 cuotas con todas las tarjetas</p>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="columna">
@@ -222,22 +459,33 @@
                 <p>La fusión perfecta entre minimalismo y maximalismo.</p>
             </div>
             <div class="columna">
-                <h5>Enlaces Rápidos</h5>
+                <h5>Tienda</h5>
                 <nav>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="productos.html">Productos</a></li>
-                        <li><a href="nosotros.html">Nosotros</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="productos.html">Todos los Productos</a></li>
+                        <li><a href="productos.html#carteras">Carteras</a></li>
+                        <li><a href="productos.html#calzado">Calzado</a></li>
+                        <li><a href="productos.html#tops">Tops</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="columna">
-                <h5>Síguenos</h5>
+                <h5>Ayuda</h5>
+                <nav>
+                    <ul>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="#envios">Envíos</a></li>
+                        <li><a href="#cambios">Cambios y Devoluciones</a></li>
+                        <li><a href="#talles">Guía de Talles</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="columna">
+                <h5>Seguinos</h5>
                 <div class="redes">
-                    <a href="#">Facebook</a>
                     <a href="#">Instagram</a>
-                    <a href="#">GitHub</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">TikTok</a>
                 </div>
             </div>
         </div>
@@ -249,7 +497,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Cambiar el navbar cuando se hace scroll
+        // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
@@ -264,6 +512,7 @@
             button.addEventListener('click', function() {
                 const filter = this.getAttribute('data-filter');
                 const items = document.querySelectorAll('.producto-item');
+                let visibleCount = 0;
                 
                 // Actualizar botones activos
                 document.querySelectorAll('[data-filter]').forEach(btn => btn.classList.remove('active'));
@@ -273,12 +522,68 @@
                 items.forEach(item => {
                     if (filter === 'todos' || item.getAttribute('data-categoria') === filter) {
                         item.style.display = 'block';
+                        visibleCount++;
                     } else {
                         item.style.display = 'none';
                     }
                 });
+                
+                // Actualizar contador
+                document.getElementById('countResultados').textContent = visibleCount;
             });
         });
+
+        // Favoritos toggle
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('favorite-btn--active');
+                this.textContent = this.classList.contains('favorite-btn--active') ? '♥' : '♡';
+            });
+        });
+
+        // Simular agregar al carrito
+        let cartCount = 0;
+        document.querySelectorAll('.btn-comprar').forEach(btn => {
+            btn.addEventListener('click', function() {
+                cartCount++;
+                document.querySelector('.cart-icon__count').textContent = cartCount;
+                
+                // Feedback visual
+                this.textContent = '¡Agregado!';
+                this.style.backgroundColor = '#28a745';
+                setTimeout(() => {
+                    this.textContent = 'Agregar al Carrito';
+                    this.style.backgroundColor = '';
+                }, 1500);
+            });
+        });
+
+        // Ordenar productos
+        document.getElementById('ordenar').addEventListener('change', function() {
+            const container = document.getElementById('productosGaleria');
+            const items = Array.from(container.querySelectorAll('.producto-item'));
+            
+            items.sort((a, b) => {
+                const precioA = parseInt(a.dataset.precio);
+                const precioB = parseInt(b.dataset.precio);
+                
+                if (this.value === 'precio-asc') return precioA - precioB;
+                if (this.value === 'precio-desc') return precioB - precioA;
+                return 0;
+            });
+            
+            items.forEach(item => container.appendChild(item));
+        });
+
+        // Scroll a categoría si hay hash
+        if (window.location.hash) {
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 100);
+        }
     </script>
 </body>
 </html>

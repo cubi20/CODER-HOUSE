@@ -1,23 +1,53 @@
-// _variables.scss
-// Variables de colores
+// _variables.scss - CRUDAS Fashion Store
+// Variables actualizadas y expandidas
+
+// ============================================
+// COLORES
+// ============================================
 $color-primary: #C66E0C;
+$color-primary-light: #E8944A;
+$color-primary-dark: #9A5609;
 $color-secondary: #333;
+$color-secondary-light: #555;
 $color-background: #F9F1E6;
+$color-background-alt: #FDF8F3;
 $color-text: #333;
 $color-text-light: #666;
 $color-text-lighter: #aaa;
 $color-white: white;
 $color-dark-bg: #2c2c2c;
+$color-success: #28a745;
+$color-danger: #dc3545;
+$color-warning: #ffc107;
+$color-info: #17a2b8;
 
-// Variables de tipografía
+// ============================================
+// TIPOGRAFÍA
+// ============================================
 $font-family: 'Roboto', sans-serif;
+$font-family-accent: 'Playfair Display', serif;
 $font-weight-thin: 100;
 $font-weight-light: 300;
 $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-bold: 700;
 
-// Variables de espaciado
+// Tamaños de fuente
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 28px;
+$font-size-4xl: 36px;
+$font-size-5xl: 48px;
+$font-size-6xl: 72px;
+$font-size-hero: 96px;
+
+// ============================================
+// ESPACIADO
+// ============================================
 $spacing-xs: 5px;
 $spacing-sm: 10px;
 $spacing-md: 20px;
@@ -25,29 +55,60 @@ $spacing-lg: 30px;
 $spacing-xl: 40px;
 $spacing-xxl: 60px;
 $spacing-xxxl: 80px;
+$spacing-mega: 100px;
 
-// Variables de tamaños
+// ============================================
+// TAMAÑOS Y DIMENSIONES
+// ============================================
 $navbar-height: 100px;
 $navbar-padding: 20px 40px;
+$max-width-content: 1400px;
+$max-width-narrow: 1200px;
+$max-width-text: 800px;
+
+// Border radius
+$border-radius-xs: 5px;
 $border-radius-sm: 10px;
 $border-radius-md: 15px;
 $border-radius-lg: 20px;
 $border-radius-xl: 25px;
 $border-radius-round: 50px;
+$border-radius-circle: 50%;
 
-// Variables de transiciones
+// ============================================
+// TRANSICIONES
+// ============================================
 $transition-fast: 0.3s ease;
 $transition-medium: 0.4s ease;
 $transition-slow: 0.6s ease;
+$transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-// Variables de sombras
+// ============================================
+// SOMBRAS
+// ============================================
+$shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.08);
 $shadow-sm: 0 5px 20px rgba(0, 0, 0, 0.1);
 $shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
 $shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);
 $shadow-xl: 0 20px 60px rgba(198, 110, 12, 0.2);
+$shadow-hover: 0 15px 45px rgba(198, 110, 12, 0.25);
 
-// Breakpoints
+// ============================================
+// BREAKPOINTS
+// ============================================
+$breakpoint-xs: 375px;
 $breakpoint-mobile: 576px;
-$breakpoint-tablet: 991.98px;
-$breakpoint-desktop: 1600px;
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 991.98px;
+$breakpoint-desktop: 1200px;
+$breakpoint-wide: 1600px;
 
+// ============================================
+// Z-INDEX
+// ============================================
+$z-dropdown: 100;
+$z-sticky: 500;
+$z-fixed: 1000;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-tooltip: 1070;

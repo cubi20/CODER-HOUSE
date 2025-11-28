@@ -3,27 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CRUDAS - Tienda de moda donde el minimalismo y el maximalismo se encuentran">
+    <meta name="description" content="CRUDAS - Tienda de moda femenina donde el minimalismo y el maximalismo se encuentran. Carteras, calzado y tops únicos.">
+    <meta name="keywords" content="moda femenina, carteras, calzado, tops, ropa mujer, minimalismo, maximalismo, Argentina">
     <meta name="author" content="CRUDAS Fashion">
+    <meta name="robots" content="index, follow">
     
-    <!-- BOOTSTRAP CSS -->
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="CRUDAS - Moda Femenina">
+    <meta property="og:description" content="Donde el minimalismo y el maximalismo se encuentran">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cubi20.github.io/CODER-HOUSE/">
+    <meta property="og:image" content="img/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css">
     
-    <!-- GOOGLE FONTS -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     
-    <title>CRUDAS - Home</title>
+    <title>CRUDAS - Moda Femenina | Home</title>
 </head>
 <body>
+    <!-- Header / Navbar -->
     <header>
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
             <div class="container-fluid">
                 <!-- Botón hamburguesa -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -31,45 +45,42 @@
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">HOME</a>
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="productos.html">PRODUCTOS</a>
+                            <a class="nav-link" href="productos.html">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="nosotros.html">NOSOTROS</a>
+                            <a class="nav-link" href="colecciones.html">Colecciones</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                COLECCIONES
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#verano">Verano 2025</a></li>
-                                <li><a class="dropdown-item" href="#invierno">Invierno 2025</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#limitada">Edición Limitada</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="nosotros.html">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Logo -->
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.html" aria-label="CRUDAS - Ir al inicio">
                     <img src="img/logo.jpg" alt="CRUDAS Logo" class="logo-img">
                 </a>
 
                 <!-- Buscador e iconos -->
                 <div class="navbar-right">
-                    <!-- Buscador -->
-                    <form class="search-form" id="searchForm">
-                        <input type="search" placeholder="Buscar..." id="searchInput">
-                        <button type="submit">Buscar</button>
+                    <form class="search-form" role="search" id="searchForm">
+                        <input type="search" placeholder="Buscar productos..." aria-label="Buscar">
+                        <button type="submit" aria-label="Buscar">🔍</button>
                     </form>
                     
-                    <!-- Iconos -->
                     <div class="navbar-icons">
-                        <a href="#cuenta">👤</a>
-                        <a href="#carrito">🛒</a>
+                        <a href="#cuenta" aria-label="Mi cuenta">👤</a>
+                        <a href="#favoritos" aria-label="Mis favoritos">♡</a>
+                        <a href="#carrito" class="cart-icon" aria-label="Carrito de compras">
+                            🛒
+                            <span class="cart-icon__count">0</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -77,8 +88,8 @@
     </header>
 
     <main>
-        <!-- Hero Section con imagen de fondo -->
-        <section class="hero-section">
+        <!-- Hero Section -->
+        <section class="hero-section" aria-label="Banner principal">
             <div class="hero-content">
                 <h1>CRUDAS</h1>
                 <p>Donde el minimalismo y el maximalismo se encuentran</p>
@@ -87,38 +98,49 @@
         </section>
 
         <!-- Productos Destacados -->
-        <section class="productos-destacados">
-            <h2>Productos Destacados</h2>
+        <section class="productos-destacados" aria-labelledby="destacados-titulo">
+            <h2 id="destacados-titulo">Productos Destacados</h2>
             <div class="destacados-container">
+                <!-- Producto 1 -->
                 <article class="producto-destacado">
+                    <span class="badge badge--new">Nuevo</span>
                     <div class="producto-imagen">
-                        <img src="img/cartera1.jpg" alt="Cartera Minimal Black">
+                        <img src="img/cartera1.jpg" alt="Cartera Minimal Black - Cuero negro con diseño minimalista" loading="lazy">
                     </div>
                     <div class="producto-info">
-                        <h3>Cartera Minimal Black</h3>
-                        <p class="producto-precio">$25,000</p>
+                        <span class="producto-categoria">Carteras</span>
+                        <h3>Cartera Rafia</h3>
+                        <p class="producto-precio">$89.990</p>
+                        <span class="producto-precio--cuotas">3 cuotas sin interés de $29.997</span>
                         <a href="productos.html#carteras" class="producto-link">Ver Detalles</a>
                     </div>
                 </article>
 
+                <!-- Producto 2 -->
                 <article class="producto-destacado">
+                    <span class="badge badge--bestseller">Más Vendido</span>
                     <div class="producto-imagen">
-                        <img src="img/calzado2.jpg" alt="Botas Statement">
+                        <img src="img/calzado5.jpg" alt="Bota Escorpio Negro - Botas de cuero con tacón alto" loading="lazy">
                     </div>
                     <div class="producto-info">
-                        <h3>Botas Statement</h3>
-                        <p class="producto-precio">$55,000</p>
+                        <span class="producto-categoria">Calzado</span>
+                        <h3>Bota Escorpio Negro</h3>
+                        <p class="producto-precio">$179.990</p>
+                        <span class="producto-precio--cuotas">6 cuotas sin interés de $26.665</span>
                         <a href="productos.html#calzado" class="producto-link">Ver Detalles</a>
                     </div>
                 </article>
 
+                <!-- Producto 3 -->
                 <article class="producto-destacado">
                     <div class="producto-imagen">
-                        <img src="img/top2.jpg" alt="Top Statement">
+                        <img src="img/top2.jpg" alt="Top Statement - Top elegante con detalles únicos" loading="lazy">
                     </div>
                     <div class="producto-info">
-                        <h3>Top Statement</h3>
-                        <p class="producto-precio">$15,000</p>
+                        <span class="producto-categoria">Tops</span>
+                        <h3>Top Básico Negro</h3>
+                        <p class="producto-precio">$45.990</p>
+                        <span class="producto-precio--cuotas">3 cuotas sin interés de $15.330</span>
                         <a href="productos.html#tops" class="producto-link">Ver Detalles</a>
                     </div>
                 </article>
@@ -126,114 +148,175 @@
         </section>
 
         <!-- Categorías -->
-        <section class="categoria-completa">
-            <h2>Explorá Nuestras Categorías</h2>
+        <section class="categoria-completa" aria-labelledby="categorias-titulo">
+            <h2 id="categorias-titulo">Explorá Nuestras Categorías</h2>
             <div class="categoria-division">
                 <article class="categoria-boxes">
                     <a href="productos.html#carteras">
-                        <div class="imagen">
-                            <img src="img/carteras.png" alt="Categoría Carteras">
-                            <div class="descripcion">
+                        <figure class="imagen">
+                            <img src="img/carteras.png" alt="Colección de Carteras CRUDAS" loading="lazy">
+                            <figcaption class="descripcion">
                                 <h3>Carteras</h3>
-                            </div>
-                        </div>
+                                <p>Diseños únicos para cada ocasión</p>
+                            </figcaption>
+                        </figure>
                     </a>
                 </article>
                 
                 <article class="categoria-boxes">
                     <a href="productos.html#calzado">
-                        <div class="imagen">
-                            <img src="img/calzado.png" alt="Categoría Calzado">
-                            <div class="descripcion">
+                        <figure class="imagen">
+                            <img src="img/calzado.png" alt="Colección de Calzado CRUDAS" loading="lazy">
+                            <figcaption class="descripcion">
                                 <h3>Calzado</h3>
-                            </div>
-                        </div>
+                                <p>Comodidad y estilo en cada paso</p>
+                            </figcaption>
+                        </figure>
                     </a>
                 </article>
                 
                 <article class="categoria-boxes">
                     <a href="productos.html#tops">
-                        <div class="imagen">
-                            <img src="img/tops.png" alt="Categoría Tops">
-                            <div class="descripcion">
+                        <figure class="imagen">
+                            <img src="img/tops.png" alt="Colección de Tops CRUDAS" loading="lazy">
+                            <figcaption class="descripcion">
                                 <h3>Tops</h3>
-                            </div>
-                        </div>
+                                <p>Expresá tu personalidad</p>
+                            </figcaption>
+                        </figure>
                     </a>
                 </article>
             </div>
         </section>
 
-        <!-- Section Proceso de Compra -->
-        <section class="proceso-compra">
-            <h2>Proceso de Compra</h2>
+        <!-- Nueva Colección Banner -->
+        <section class="coleccion-banner">
+            <div class="container">
+                <span class="season-badge">Nueva Temporada</span>
+                <h2>Verano 2026</h2>
+                <p>Descubrí nuestra nueva colección que fusiona la frescura del verano con la elegancia atemporal.</p>
+                <a href="colecciones.html#verano" class="btn-coleccion">Ver Colección</a>
+            </div>
+        </section>
+
+        <!-- Proceso de Compra -->
+        <section class="proceso-compra" aria-labelledby="proceso-titulo">
+            <h2 id="proceso-titulo">¿Cómo Comprar?</h2>
             <div class="procesos">
                 <div class="pasos">
-                    <h4>Paso 1</h4>
-                    <p>Explora nuestro catálogo</p>
+                    <div class="paso-numero">1</div>
+                    <h4>Explorá</h4>
+                    <p>Navegá por nuestro catálogo y encontrá tu estilo</p>
                 </div>
                 <div class="pasos">
-                    <h4>Paso 2</h4>
-                    <p>Selecciona tus favoritos</p>
+                    <div class="paso-numero">2</div>
+                    <h4>Seleccioná</h4>
+                    <p>Elegí talla, color y agregá a favoritos</p>
                 </div>
                 <div class="pasos">
-                    <h4>Paso 3</h4>
-                    <p>Añade al carrito</p>
+                    <div class="paso-numero">3</div>
+                    <h4>Comprá</h4>
+                    <p>Pagá en cuotas sin interés</p>
                 </div>
                 <div class="pasos">
-                    <h4>Paso 4</h4>
-                    <p>Realiza tu compra</p>
+                    <div class="paso-numero">4</div>
+                    <h4>Recibí</h4>
+                    <p>Envío gratis a todo el país</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Información de Servicios -->
+        <section class="informacion" aria-label="Beneficios de compra">
+            <div class="info-container">
+                <div class="items">
+                    <div class="icon">🚚</div>
+                    <h4>Envío Gratis</h4>
+                    <p>En compras mayores a $150.000</p>
+                </div>
+                <div class="items">
+                    <div class="icon">🔄</div>
+                    <h4>Cambios Gratis</h4>
+                    <p>Hasta 30 días después de tu compra</p>
+                </div>
+                <div class="items">
+                    <div class="icon">💳</div>
+                    <h4>Cuotas Sin Interés</h4>
+                    <p>Hasta 6 cuotas con todas las tarjetas</p>
+                </div>
+                <div class="items">
+                    <div class="icon">🔒</div>
+                    <h4>Compra Segura</h4>
+                    <p>Tus datos siempre protegidos</p>
                 </div>
             </div>
         </section>
 
         <!-- Newsletter -->
-        <div class="newsletter">
-            <h3>Suscríbete a nuestro Newsletter</h3>
-            <p>Recibe las últimas novedades y ofertas exclusivas</p>
-            <form>
-                <input type="email" placeholder="Tu email" required>
+        <section class="newsletter" aria-labelledby="newsletter-titulo">
+            <h3 id="newsletter-titulo">Suscribite a Nuestro Newsletter</h3>
+            <p>Recibí las últimas novedades, lanzamientos exclusivos y un 15% OFF en tu primera compra</p>
+            <form id="newsletterForm">
+                <input type="email" placeholder="Tu email" required aria-label="Dirección de email">
                 <button type="submit">Suscribir</button>
             </form>
-        </div>
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="columna">
                 <h5>Sobre CRUDAS</h5>
-                <p>La fusión perfecta entre minimalismo y maximalismo.</p>
+                <p>La fusión perfecta entre minimalismo y maximalismo. Moda para mujeres auténticas y con personalidad.</p>
             </div>
             <div class="columna">
-                <h5>Enlaces Rápidos</h5>
-                <nav>
+                <h5>Tienda</h5>
+                <nav aria-label="Enlaces de tienda">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="productos.html">Productos</a></li>
-                        <li><a href="nosotros.html">Nosotros</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="productos.html">Todos los Productos</a></li>
+                        <li><a href="productos.html#carteras">Carteras</a></li>
+                        <li><a href="productos.html#calzado">Calzado</a></li>
+                        <li><a href="productos.html#tops">Tops</a></li>
+                        <li><a href="colecciones.html">Colecciones</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="columna">
-                <h5>Síguenos</h5>
+                <h5>Ayuda</h5>
+                <nav aria-label="Enlaces de ayuda">
+                    <ul>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="#envios">Envíos</a></li>
+                        <li><a href="#cambios">Cambios y Devoluciones</a></li>
+                        <li><a href="#talles">Guía de Talles</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="columna">
+                <h5>Seguinos</h5>
                 <div class="redes">
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">GitHub</a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+                    <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">TikTok</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© 2025 CRUDAS - Todos los derechos reservados</p>
+            <p class="footer-legal">
+                <a href="#terminos">Términos y Condiciones</a> | 
+                <a href="#privacidad">Política de Privacidad</a>
+            </p>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Cambiar el navbar cuando se hace scroll
+        // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
@@ -241,6 +324,13 @@
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+
+        // Newsletter form
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por suscribirte! Pronto recibirás novedades en tu email.');
+            this.reset();
         });
     </script>
 </body>
